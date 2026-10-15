@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0b0c0c; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #0b0c0c; }
+      .scene { position: absolute; inset: 0; overflow: hidden; background: #0b0c0c; }
+      .shake { position: absolute; inset: 0; }
+      .game { position: absolute; left: 0; top: 760px; width: 1080px; height: 1160px; overflow: hidden; }
+      .cam { position: absolute; inset: 0; }
+      .stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1440px; transform-origin: 0 0; }
+      .bg { position: absolute; left: 0; top: 0; width: 1920px; height: 1440px; }
+      .edge { position: absolute; left: 0; top: 740px; width: 1080px; height: 120px; fill: #0b0c0c; }
+      .sp, .txt { position: absolute; }
+      .flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+      .ring { position: absolute; width: 300px; height: 300px; margin: -150px 0 0 -150px; border-radius: 50%; border: 16px solid #fff; opacity: 0; }
+      .ring.teal { border-color: #0bb3b6; }
+      .ring.red { border-color: #e0283a; }
+      #hl { position: absolute; width: 780px; height: 48px; border-radius: 12px; border: 6px solid #fff; box-shadow: 0 0 40px 10px rgba(255,214,0,.8); opacity: 0; }
+      #m0 { position: absolute; left: -585px; top: 700px; width: 2234px; -webkit-mask-image: linear-gradient(transparent 0, #000 220px); mask-image: linear-gradient(transparent 0, #000 220px); }
+      #m7 { position: absolute; inset: 0; width: 1080px; height: 1920px; object-fit: cover; }
+      .rays { position: absolute; left: -460px; top: -540px; width: 2000px; height: 2000px; fill: #fff; opacity: 0; }
+      #logo0 { position: absolute; left: 90px; top: 300px; width: 900px; }
+      #logo7 { position: absolute; left: 70px; top: 480px; width: 940px; }
+      #play { position: absolute; left: 340px; top: 1000px; width: 400px; filter: drop-shadow(0 12px 24px rgba(0,0,0,.45)); }
+      #vig { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,.4) 100%); z-index: 40; pointer-events: none; }
+      #wipe { position: absolute; left: 0; top: 0; width: 1600px; height: 1920px; z-index: 50; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="20" data-width="1080" data-height="1920">
+      <div id="s0" class="clip scene" data-start="0" data-duration="2.5" data-track-index="1" style="background: linear-gradient(#5f7a63, #7c8c6c)">
+        <div class="shake" id="sh0"><img id="m0" src="img/menu_nologo.png" /><svg class="rays" id="ray0" viewBox="-1000 -1000 2000 2000"><polygon points="0,0 1398,-73 1398,73" /><polygon points="0,0 1339,409 1289,547" /><polygon points="0,0 1118,843 1024,955" /><polygon points="0,0 762,1174 636,1247" /><polygon points="0,0 315,1364 171,1390" /><polygon points="0,0 -171,1390 -315,1364" /><polygon points="0,0 -636,1247 -762,1174" /><polygon points="0,0 -1024,955 -1118,843" /><polygon points="0,0 -1289,547 -1339,409" /><polygon points="0,0 -1398,73 -1398,-73" /><polygon points="0,0 -1339,-409 -1289,-547" /><polygon points="0,0 -1118,-843 -1024,-955" /><polygon points="0,0 -762,-1174 -636,-1247" /><polygon points="0,0 -315,-1364 -171,-1390" /><polygon points="0,0 171,-1390 315,-1364" /><polygon points="0,0 636,-1247 762,-1174" /><polygon points="0,0 1024,-955 1118,-843" /><polygon points="0,0 1289,-547 1339,-409" /></svg><img id="logo0" src="img/logo.png" /></div>
+        <div class="flash" id="fl0"></div>
+      </div>
+      <div id="s1" class="clip scene" data-start="2.5" data-duration="2.5" data-track-index="1">
+        <div class="shake" id="sh1">
+          <div class="game"><div class="cam" id="cam1"><div class="stage" style="transform: translate(-777px,-97px) scale(0.967)"><img class="bg" src="img/s1_bg.png" /><div class="ring " id="r1" style="left:1470px;top:920px"></div><img class="sp" id="jump1" src="img/sp_jumper.png" style="left:1172px;top:296px" /></div></div></div>
+          <svg class="edge" viewBox="0 0 1080 120" preserveAspectRatio="none"><polygon points="0,0 1080,0 1080,40 940,90 820,30 690,100 560,45 430,110 300,40 170,95 0,35" /></svg>
+          <img class="txt" id="t1" src="img/t1.png" style="left:282px;top:230px;width:517px;height:520px" />
+        </div>
+        <div class="flash" id="fl1"></div>
+      </div>
+      <div id="s2" class="clip scene" data-start="5.0" data-duration="2.5" data-track-index="1">
+        <div class="shake" id="sh2">
+          <div class="game"><div class="cam" id="cam2"><div class="stage" style="transform: translate(-777px,-145px) scale(0.967)"><img class="bg" src="img/s2_bg.png" /><div class="ring teal" id="r2a" style="left:1040px;top:1000px"></div><div class="ring red" id="r2b" style="left:1665px;top:990px"></div><img class="sp" id="fox" src="img/sp_fox.png" style="left:1044px;top:232px" /><img class="sp" id="horse" src="img/sp_horse.png" style="left:1540px;top:384px" /></div></div></div>
+          <svg class="edge" viewBox="0 0 1080 120" preserveAspectRatio="none"><polygon points="0,0 1080,0 1080,40 940,90 820,30 690,100 560,45 430,110 300,40 170,95 0,35" /></svg>
+          <img class="txt" id="t2" src="img/t2.png" style="left:231px;top:230px;width:618px;height:520px" />
+        </div>
+        <div class="flash" id="fl2"></div>
+      </div>
+      <div id="s3" class="clip scene" data-start="7.5" data-duration="2.5" data-track-index="1">
+        <div class="shake" id="sh3">
+          <div class="game"><div class="cam" id="cam3"><div class="stage" style="transform: translate(-777px,0px) scale(0.967)"><img class="bg" src="img/s3_bg.png" /><img class="sp btn" src="img/btn0.png" style="left:1152px;top:322px" /><img class="sp btn" src="img/btn1.png" style="left:1152px;top:437px" /><img class="sp btn" src="img/btn2.png" style="left:1152px;top:553px" /><img class="sp btn" src="img/btn3.png" style="left:1152px;top:668px" /><img class="sp btn" src="img/btn4.png" style="left:1152px;top:784px" /><img class="sp btn" src="img/btn5.png" style="left:1152px;top:898px" /></div></div></div>
+          <svg class="edge" viewBox="0 0 1080 120" preserveAspectRatio="none"><polygon points="0,0 1080,0 1080,40 940,90 820,30 690,100 560,45 430,110 300,40 170,95 0,35" /></svg>
+          <img class="txt" id="t3" src="img/t3.png" style="left:192px;top:230px;width:696px;height:520px" />
+        </div>
+        <div class="flash" id="fl3"></div>
+      </div>
+      <div id="s4" class="clip scene" data-start="10.0" data-duration="2.5" data-track-index="1">
+        <div class="shake" id="sh4">
+          <div class="game"><div class="cam" id="cam4"><div class="stage" style="transform: translate(-735px,-97px) scale(0.967)"><img class="bg" src="img/s4_bg.png" /><img class="sp" id="jump4" src="img/sp_jumper.png" style="left:1148px;top:300px" /><div id="hl" style="left:797px;top:1000px"></div></div></div></div>
+          <svg class="edge" viewBox="0 0 1080 120" preserveAspectRatio="none"><polygon points="0,0 1080,0 1080,40 940,90 820,30 690,100 560,45 430,110 300,40 170,95 0,35" /></svg>
+          <img class="txt" id="t4" src="img/t4.png" style="left:205px;top:230px;width:670px;height:520px" />
+        </div>
+        <div class="flash" id="fl4"></div>
+      </div>
+      <div id="s5" class="clip scene" data-start="12.5" data-duration="2.5" data-track-index="1">
+        <div class="shake" id="sh5">
+          <div class="game"><div class="cam" id="cam5"><div class="stage" style="transform: translate(-777px,-232px) scale(0.967)"><img class="bg" src="img/s5_bg.png" /><img class="sp hat" src="img/hat0.png" style="left:1465px;top:400px" /><img class="sp hat" src="img/hat1.png" style="left:1600px;top:400px" /><img class="sp hat" src="img/hat2.png" style="left:1732px;top:400px" /><img class="sp hat" src="img/hat3.png" style="left:1465px;top:535px" /><img class="sp hat" src="img/hat4.png" style="left:1600px;top:535px" /><img class="sp hat" src="img/hat5.png" style="left:1732px;top:535px" /><img class="sp hat" src="img/hat6.png" style="left:1465px;top:668px" /><img class="sp hat" src="img/hat7.png" style="left:1600px;top:668px" /><img class="sp hat" src="img/hat8.png" style="left:1732px;top:668px" /><img class="sp hat" src="img/hat9.png" style="left:1465px;top:800px" /><img class="sp hat" src="img/hat10.png" style="left:1600px;top:800px" /><img class="sp hat" src="img/hat11.png" style="left:1732px;top:800px" /><img class="sp hat" src="img/hat12.png" style="left:1465px;top:930px" /><img class="sp hat" src="img/hat13.png" style="left:1600px;top:930px" /><img class="sp hat" src="img/hat14.png" style="left:1732px;top:930px" /></div></div></div>
+          <svg class="edge" viewBox="0 0 1080 120" preserveAspectRatio="none"><polygon points="0,0 1080,0 1080,40 940,90 820,30 690,100 560,45 430,110 300,40 170,95 0,35" /></svg>
+          <img class="txt" id="t5" src="img/t5.png" style="left:255px;top:230px;width:570px;height:520px" />
+        </div>
+        <div class="flash" id="fl5"></div>
+      </div>
+      <div id="s6" class="clip scene" data-start="15.0" data-duration="2.5" data-track-index="1">
+        <div class="shake" id="sh6">
+          <div class="game"><div class="cam" id="cam6"><div class="stage" style="transform: translate(-754px,-242px) scale(0.967)"><img class="bg stripe" id="st0" src="img/s6_bg.png" style="clip-path: polygon(0px 0px, 1250px 0px, 1106px 1440px, 0px 1440px)" /><img class="bg stripe" id="st1" src="img/s6_bg.png" style="clip-path: polygon(1250px 0px, 1630px 0px, 1457px 1440px, 1106px 1440px)" /><img class="bg stripe" id="st2" src="img/s6_bg.png" style="clip-path: polygon(1630px 0px, 1920px 0px, 1920px 1440px, 1457px 1440px)" /></div></div></div>
+          <svg class="edge" viewBox="0 0 1080 120" preserveAspectRatio="none"><polygon points="0,0 1080,0 1080,40 940,90 820,30 690,100 560,45 430,110 300,40 170,95 0,35" /></svg>
+          <img class="txt" id="t6" src="img/t6.png" style="left:247px;top:230px;width:586px;height:520px" />
+        </div>
+        <div class="flash" id="fl6"></div>
+      </div>
+      <div id="s7" class="clip scene" data-start="17.5" data-duration="2.5" data-track-index="1" style="background: radial-gradient(circle at 50% 40%, #8a9a74, #4e6352 75%)">
+        <div class="shake" id="sh7"><div id="m7"></div><svg class="rays" id="ray7" viewBox="-1000 -1000 2000 2000"><polygon points="0,0 1398,-73 1398,73" /><polygon points="0,0 1339,409 1289,547" /><polygon points="0,0 1118,843 1024,955" /><polygon points="0,0 762,1174 636,1247" /><polygon points="0,0 315,1364 171,1390" /><polygon points="0,0 -171,1390 -315,1364" /><polygon points="0,0 -636,1247 -762,1174" /><polygon points="0,0 -1024,955 -1118,843" /><polygon points="0,0 -1289,547 -1339,409" /><polygon points="0,0 -1398,73 -1398,-73" /><polygon points="0,0 -1339,-409 -1289,-547" /><polygon points="0,0 -1118,-843 -1024,-955" /><polygon points="0,0 -762,-1174 -636,-1247" /><polygon points="0,0 -315,-1364 -171,-1390" /><polygon points="0,0 171,-1390 315,-1364" /><polygon points="0,0 636,-1247 762,-1174" /><polygon points="0,0 1024,-955 1118,-843" /><polygon points="0,0 1289,-547 1339,-409" /></svg><img id="logo7" src="img/logo.png" /><img id="play" src="img/play.png" /></div>
+        <div class="flash" id="fl7"></div>
+      </div>
+      <div id="vig" class="clip" data-start="0" data-duration="20" data-track-index="3"></div>
+      <svg id="wipe" class="clip" data-start="0" data-duration="20" data-track-index="2" viewBox="0 0 2400 1080" preserveAspectRatio="none"><polygon points="0,0 110,140 30,260 140,420 60,560 170,700 40,860 130,1080 2280,1080 2370,900 2250,760 2350,600 2240,430 2360,280 2270,120 2380,0" fill="#0b0c0c" /></svg>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const seen = {};
+      const ft = (sel, from, to, t) => { to.immediateRender = !seen[sel]; seen[sel] = true; tl.fromTo(sel, from, to, t); };
+      const shake = (sel, t, a) => tl.to(sel, { x: a, y: -a * 0.6, duration: 0.04, ease: "sine.inOut", yoyo: true, repeat: 5 }, t);
+      const flash = (sel, t, p) => ft(sel, { opacity: p }, { opacity: 0, duration: 0.35, ease: "expo.out" }, t);
+      const ring = (sel, t) => ft(sel, { scale: 0.3, opacity: 1 }, { scale: 1.35, opacity: 0, duration: 0.55, ease: "expo.out" }, t);
+      const slam = (sel, t) => ft(sel, { scale: 2.4, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.42, ease: "power4.in" }, t);
+      const camIn = (i, T) => {
+        ft("#cam" + i, { scale: 1.35, filter: "blur(16px)" }, { scale: 1, filter: "blur(0px)", duration: 0.7, ease: "expo.out" }, T);
+        tl.to("#cam" + i, { scale: 1.06, duration: 1.8, ease: "sine.inOut" }, T + 0.7);
+      };
+      // Intro
+      ft("#m0", { scale: 1.4, filter: "blur(18px)" }, { scale: 1, filter: "blur(0px)", duration: 1.0, ease: "expo.out" }, 0);
+      ft("#logo0", { y: -900, scale: 1.6 }, { y: 0, scale: 1, duration: 0.35, ease: "power4.in" }, 0.35);
+      tl.to("#logo0", { scaleY: 0.86, scaleX: 1.08, duration: 0.1, ease: "power2.out", yoyo: true, repeat: 1 }, 0.7);
+      tl.to("#logo0", { y: -14, duration: 1.2, ease: "sine.inOut" }, 0.95);
+      shake("#sh0", 0.7, 14); flash("#fl0", 0.7, 0.7);
+      ft("#ray0", { opacity: 0, rotation: 0 }, { opacity: 0.16, rotation: 35, duration: 1.8, ease: "sine.inOut" }, 0.7);
+      // Feature scenes: camera whip-in, text slam with impact
+      for (let i = 1; i <= 6; i++) {
+        const T = 2.5 * i;
+        camIn(i, T);
+        const ts = i === 6 ? T + 1.0 : T + 0.3;
+        slam("#t" + i, ts);
+        shake("#sh" + i, ts + 0.42, 12);
+        flash("#fl" + i, ts + 0.42, 0.45);
+      }
+      // 1 Gameplay: tap, jump, tap, jump
+      let T = 2.5;
+      ring("#r1", T + 0.2); ring("#r1", T + 1.25);
+      ft("#jump1", { x: -520, y: 420, rotation: -30 }, { x: 0, y: 0, rotation: 0, duration: 0.55, ease: "power3.out" }, T + 0.22);
+      tl.to("#jump1", { x: 120, y: 260, rotation: 18, duration: 0.45, ease: "power2.in" }, T + 0.8);
+      tl.to("#jump1", { x: 300, y: -60, rotation: -10, duration: 0.5, ease: "power2.out" }, T + 1.27);
+      tl.to("#jump1", { x: 380, y: 60, rotation: 8, duration: 0.7, ease: "sine.inOut" }, T + 1.77);
+      // 2 Multiplayer: two players, alternating taps
+      T = 5;
+      ft("#fox", { y: 600 }, { y: 0, duration: 0.5, ease: "power3.out" }, T + 0.2);
+      ft("#horse", { y: 600 }, { y: 0, duration: 0.5, ease: "power3.out" }, T + 0.32);
+      tl.to("#fox", { y: -70, rotation: -6, duration: 0.32, ease: "power2.out", yoyo: true, repeat: 3 }, T + 0.8);
+      tl.to("#horse", { y: -120, rotation: 6, duration: 0.32, ease: "power2.out", yoyo: true, repeat: 3 }, T + 0.96);
+      ring("#r2a", T + 0.8); ring("#r2a", T + 1.44); ring("#r2b", T + 0.96); ring("#r2b", T + 1.6);
+      // 3 Map editor: tool buttons pop in
+      ft(".btn", { scale: 0, rotation: -25 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.2)", stagger: 0.07 }, 7.5 + 0.55);
+      // 4 Leaderboard: jumper hops, highlight climbs 17 -> 14
+      T = 10;
+      tl.to("#jump4", { y: -90, rotation: -6, duration: 0.35, ease: "power2.out", yoyo: true, repeat: 5 }, T + 0.3);
+      ft("#hl", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, T + 0.75);
+      tl.to("#hl", { y: -144, duration: 0.7, ease: "power3.inOut" }, T + 1.0);
+      tl.to("#hl", { scale: 1.06, duration: 0.15, ease: "back.out(2)", yoyo: true, repeat: 1 }, T + 1.7);
+      // 5 Cosmetics: hats pop in
+      ft(".hat", { scale: 0, rotation: 40 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(2.5)", stagger: 0.05 }, 12.5 + 0.5);
+      // 6 Bosses: three boss panels slam down
+      T = 15;
+      [0, 1, 2].forEach(k => {
+        const t = T + 0.05 + k * 0.33;
+        ft("#st" + k, { y: -1500 }, { y: 0, duration: 0.22, ease: "expo.in" }, t);
+        shake("#sh6", t + 0.22, 16); flash("#fl6", t + 0.22, 0.35);
+      });
+      // Outro
+      ft("#m7", { scale: 1.2 }, { scale: 1, duration: 2.5, ease: "power2.out" }, 17.5);
+      ft("#logo7", { y: -1000, scale: 1.6 }, { y: 0, scale: 1, duration: 0.35, ease: "power4.in" }, 17.6);
+      tl.to("#logo7", { scaleY: 0.86, scaleX: 1.08, duration: 0.1, ease: "power2.out", yoyo: true, repeat: 1 }, 17.95);
+      shake("#sh7", 17.95, 14); flash("#fl7", 17.95, 0.7);
+      ft("#ray7", { opacity: 0, rotation: 0 }, { opacity: 0.18, rotation: 40, duration: 2, ease: "sine.inOut" }, 17.95);
+      ft("#play", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2.5)" }, 18.35);
+      tl.to("#play", { scale: 1.1, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 3 }, 18.85);
+      // Jagged wipes at every cut
+      [2.5, 5, 7.5, 10, 12.5, 15, 17.5].forEach(c => {
+        ft("#wipe", { x: 1080 }, { x: -260, duration: 0.25, ease: "power3.in" }, c - 0.25);
+        tl.to("#wipe", { x: -1700, duration: 0.4, ease: "expo.out" }, c);
+      });
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
