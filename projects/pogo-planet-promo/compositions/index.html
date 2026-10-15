@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0b0c0c; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #0b0c0c; }
+      .scene { position: absolute; inset: 0; overflow: hidden; background: #0b0c0c; }
+      .cam { position: absolute; inset: 0; }
+      .bg { position: absolute; left: 0; top: -180px; width: 1920px; height: 1440px; }
+      .txt { position: absolute; }
+      .menu { position: absolute; inset: 0; width: 1920px; height: 1080px; object-fit: cover; }
+      .ring { position: absolute; width: 300px; height: 300px; margin: -150px 0 0 -150px; border-radius: 50%; border: 18px solid #fff; opacity: 0; }
+      .ring.teal { border-color: #0b9396; }
+      .ring.red { border-color: #c3202f; }
+      #logo { position: absolute; left: 610px; top: 70px; width: 700px; }
+      #logo2 { position: absolute; left: 510px; top: 230px; width: 900px; }
+      #play { position: absolute; left: 835px; top: 680px; width: 250px; }
+      #wipe { position: absolute; left: 0; top: 0; width: 2400px; height: 1080px; z-index: 50; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="20" data-width="1920" data-height="1080">
+      <div id="s0" class="clip scene" data-start="0" data-duration="2.5" data-track-index="1">
+        <img class="menu" id="m0" src="img/menu_nologo.png" />
+        <img id="logo" src="img/logo.png" />
+      </div>
+      <div id="s1" class="clip scene" data-start="2.5" data-duration="2.5" data-track-index="1">
+        <div class="cam" id="cam1"><img class="bg" id="bg1" src="img/s1_bg.png" /><div class="ring" id="r1a" style="left:1470px;top:740px"></div></div>
+        <img class="txt" id="t1" src="img/s1_txt.png" style="left:60px;top:140px;width:740px;height:745px" />
+      </div>
+      <div id="s2" class="clip scene" data-start="5.0" data-duration="2.5" data-track-index="1">
+        <div class="cam" id="cam2"><img class="bg" id="bg2" src="img/s2_bg.png" /><div class="ring teal" id="r2a" style="left:1040px;top:820px"></div><div class="ring red" id="r2b" style="left:1665px;top:810px"></div></div>
+        <img class="txt" id="t2" src="img/s2_txt.png" style="left:55px;top:150px;width:760px;height:640px" />
+      </div>
+      <div id="s3" class="clip scene" data-start="7.5" data-duration="2.5" data-track-index="1">
+        <div class="cam" id="cam3"><img class="bg" id="bg3" src="img/s3_bg.png" /></div>
+        <img class="txt" id="t3" src="img/s3_txt.png" style="left:85px;top:185px;width:900px;height:670px" />
+      </div>
+      <div id="s4" class="clip scene" data-start="10.0" data-duration="2.5" data-track-index="1">
+        <div class="cam" id="cam4"><img class="bg" id="bg4" src="img/s4_bg.png" /><div id="hl4" style="position:absolute;left:800px;top:823px;width:780px;height:46px;border-radius:10px;background:#fff;opacity:0"></div></div>
+        <img class="txt" id="t4" src="img/s4_txt.png" style="left:80px;top:140px;width:795px;height:630px" />
+      </div>
+      <div id="s5" class="clip scene" data-start="12.5" data-duration="2.5" data-track-index="1">
+        <div class="cam" id="cam5"><img class="bg" id="bg5" src="img/s5_bg.png" /></div>
+        <img class="txt" id="t5" src="img/s5_txt.png" style="left:70px;top:110px;width:795px;height:725px" />
+      </div>
+      <div id="s6" class="clip scene" data-start="15.0" data-duration="2.5" data-track-index="1">
+        <div class="cam" id="cam6"><img class="bg" id="bg6" src="img/s6_bg.png" /></div>
+        <img class="txt" id="t6" src="img/s6_txt.png" style="left:55px;top:110px;width:750px;height:670px" />
+      </div>
+      <div id="s7" class="clip scene" data-start="17.5" data-duration="2.5" data-track-index="1">
+        <img class="menu" id="m7" src="img/menu_nologo.png" style="filter: brightness(0.85) blur(8px)" />
+        <img id="logo2" src="img/logo.png" />
+        <img id="play" src="img/play.png" />
+      </div>
+      <svg id="wipe" class="clip" data-start="0" data-duration="20" data-track-index="2" viewBox="0 0 2400 1080"><polygon points="0,0 110,140 30,260 140,420 60,560 170,700 40,860 130,1080 2280,1080 2370,900 2250,760 2350,600 2240,430 2360,280 2270,120 2380,0" fill="#0b0c0c" /></svg>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      // Intro
+      tl.fromTo("#m0", { scale: 1.18 }, { scale: 1.03, duration: 1.4, ease: "power3.out" }, 0);
+      tl.to("#m0", { scale: 1.0, duration: 1.1, ease: "sine.inOut" }, 1.4);
+      tl.fromTo("#logo", { scale: 0.3, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.7, ease: "back.out(1.6)" }, 0.3);
+      tl.to("#logo", { y: -12, duration: 1.2, ease: "sine.inOut" }, 1.0);
+      // Feature scenes
+      for (let i = 1; i <= 6; i++) {
+        const T = 2.5 * i;
+        tl.fromTo("#bg" + i, { scale: 1.12, x: 80 }, { scale: 1.0, x: 0, duration: 0.8, ease: "power3.out" }, T);
+        tl.to("#bg" + i, { scale: 1.04, duration: 1.7, ease: "sine.inOut" }, T + 0.8);
+        tl.fromTo("#t" + i, { clipPath: "inset(0% 100% 0% 0%)", x: -60 }, { clipPath: "inset(0% 0% 0% 0%)", x: 0, duration: 0.6, ease: "expo.out" }, T + 0.15);
+        tl.fromTo("#t" + i, { scale: 1 }, { scale: 1.04, duration: 0.25, ease: "back.out(1.6)", yoyo: true, repeat: 1 }, T + 0.8);
+      }
+      // Accents
+      [3.1, 3.9].forEach(t => tl.fromTo("#r1a", { scale: 0.4, opacity: 1 }, { scale: 1.3, opacity: 0, duration: 0.6, ease: "expo.out", immediateRender: false }, t));
+      [5.5, 5.9, 6.3, 6.7].forEach((t, k) => tl.fromTo(k % 2 ? "#r2b" : "#r2a", { scale: 0.4, opacity: 1 }, { scale: 1.3, opacity: 0, duration: 0.55, ease: "expo.out", immediateRender: false }, t));
+      tl.fromTo("#hl4", { opacity: 0 }, { opacity: 0.55, duration: 0.15, ease: "expo.out", yoyo: true, repeat: 1 }, 11.0);
+      tl.fromTo("#cam6", { x: 0, y: 0 }, { x: 14, y: -8, duration: 0.06, ease: "sine.inOut", yoyo: true, repeat: 7 }, 15.7);
+      // Outro
+      tl.fromTo("#logo2", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.7, ease: "back.out(1.6)" }, 17.7);
+      tl.fromTo("#play", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.6)" }, 18.1);
+      tl.to("#play", { scale: 1.08, duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: 3 }, 18.6);
+      tl.fromTo("#m7", { scale: 1.1 }, { scale: 1.0, duration: 2.5, ease: "power2.out" }, 17.5);
+      // Jagged wipes at every cut
+      [2.5, 5, 7.5, 10, 12.5, 15, 17.5].forEach(T => {
+        tl.fromTo("#wipe", { x: 1920 }, { x: -240, duration: 0.3, ease: "power3.in", immediateRender: T === 2.5 }, T - 0.3);
+        tl.to("#wipe", { x: -2500, duration: 0.45, ease: "expo.out" }, T);
+      });
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
