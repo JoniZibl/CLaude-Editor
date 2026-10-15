@@ -1,0 +1,32 @@
+# Secrets
+.env
+video-use/.env
+
+# Dependencies / envs
+node_modules/
+__pycache__/
+.venv/
+video-use/.venv/
+
+# Video-Use wird beim Setup geklont (eigenes Repo)
+video-use/
+
+# Skill-Links zeigen in node_modules/ bzw. video-use/ — beim Setup neu angelegt
+.claude/skills/*
+
+# Rohmaterial
+raw/**/*.mp4
+raw/**/*.mov
+raw/**/*.mkv
+
+# Generierte Outputs
+projects/*/renders/*.mp4
+projects/*/previews/*.mp4
+projects/*/transcripts/*.json
+projects/*/_bundle_assets/
+projects/*/assets/speaker.mp4
+.hyperframes-cache/
+
+# OS
+.DS_Store
+Thumbs.db

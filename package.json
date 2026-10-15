@@ -1,0 +1,21 @@
+{
+  "name": "video-editor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "preview": "hyperframes preview",
+    "doctor": "hyperframes doctor",
+    "render": "hyperframes render"
+  },
+  "dependencies": {
+    "@hyperframes/core": "^0.8.161",
+    "@hyperframes/shader-transitions": "^0.8.161",
+    "gsap": "^3.14.2",
+    "hyperframes": "^0.8.161",
+    "puppeteer-core": "^25.10.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
