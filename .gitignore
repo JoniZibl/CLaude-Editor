@@ -13,6 +13,7 @@ video-use/
 
 # Skill-Links zeigen in node_modules/ bzw. video-use/ — beim Setup neu angelegt
 .claude/skills/*
+!.claude/skills/video/
 
 # Rohmaterial
 raw/**/*.mp4

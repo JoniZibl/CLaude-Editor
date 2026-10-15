@@ -27,6 +27,7 @@ scripts/setup.sh         idempotentes Setup
 
 ## Beispielprompts
 
+- `/video <Briefing>`: Animationsvideo aus einem Briefing, z.B. `/video 20s Promo für unser Tool, hochkant`
 - *Edit @raw/<projekt>/<datei>.mp4 in eine Folge.*
 - *Mach daraus einen YouTube-Short (1080×1920) mit Split-Layouts und Untertiteln.*
 - *Mach ein 30-Sekunden-Promo-Video für unser Produkt mit Brand `brand-guidelines/<name>/`.*
