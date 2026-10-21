@@ -26,7 +26,7 @@ char = (f'<div id="ch"><div id="chs"><div id="chsc" style="transform:scale({CS})
         f'<img src="img/stick.png" style="position:absolute;left:10px;top:49px" /><img src="img/body.png" style="position:absolute;left:0;top:0" />'
         f'<img src="img/h29.png" style="position:absolute;left:{HAT[0]}px;top:{HAT[1]}px;width:{HAT[2]}px;height:{HAT[3]}px" /></div></div></div></div>')
 
-world = ('<div id="grid"></div>' + "".join(plat(p) for p in PLAT) +
+world = ("".join(plat(p) for p in PLAT) +
          f'<div id="rot" style="left:{ROT[0]-ROT[2]/2}px;top:{ROT[1]-ROT[3]/2}px;width:{ROT[2]}px;height:{ROT[3]}px"></div>'
          f'<div class="pivot" style="left:{ROT[0]-14}px;top:{ROT[1]-14}px"></div>'
          '<div id="sel"><i></i><i></i><i></i><i></i></div><div id="tap"></div>'
@@ -52,7 +52,6 @@ js = f"""
       const pillOut = (id, t) => tl.to(id, {{ x: 1400, duration: 0.25, ease: "power2.in" }}, t);
       tl.set("#world", {json.dumps(O)}, 0);
       // 1 Empty level + grid
-      ft("#grid", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.5, ease: "power2.out" }}, 0);
       slam("#h1", B(1)); shake(B(1), 12); flash(B(1), 0.35);
       tl.to("#h1", {{ y: -60, opacity: 0, duration: 0.25, ease: "power2.in" }}, B(3) - 0.25);
       // editor selection frame jumps to every block that gets placed
