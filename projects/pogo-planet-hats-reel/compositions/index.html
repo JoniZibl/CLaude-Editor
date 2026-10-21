@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Exo2"; src: url("fonts/exo-2-latin-900-italic.woff2") format("woff2"); font-weight: 900; font-style: italic; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0b0c0c; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: "Exo2", sans-serif; font-weight: 900; font-style: italic; text-transform: uppercase; }
+      .scene { position: absolute; inset: 0; overflow: hidden; }
+      .sky { background: linear-gradient(180deg, #66806a 0%, #9aa766 55%, #c9b84a 100%); }
+      #shk { position: absolute; inset: 0; }
+      .hills { position: absolute; left: 0; bottom: 0; width: 1080px; height: 900px; }
+      .sun { position: absolute; width: 220px; height: 220px; border-radius: 50%; background: #f4c63d; box-shadow: 0 0 120px 40px rgba(244,198,61,.35); }
+      .ground { position: absolute; left: 0; top: 1500px; width: 1080px; height: 420px; background: #1b1d1d; }
+      .ground::before { content: ""; position: absolute; left: 0; top: -18px; width: 1080px; height: 30px; background: #2f8a55; border-radius: 0 0 8px 8px; }
+      .char { position: absolute; width: 330px; height: 380px; transform-origin: 0 0; }
+      .bob { position: absolute; inset: 0; }
+      .stick { position: absolute; left: 10px; top: 49px; }
+      .body { position: absolute; left: 0; top: 0; }
+      .hat { position: absolute; opacity: 0; transform-origin: 50% 100%; }
+      .head { font-size: 150px; line-height: .92; letter-spacing: -2px; text-align: center; position: absolute; left: 0; width: 1080px; }
+      .w { color: #fbfbf7; }
+      .y { background: linear-gradient(180deg, #ffd400, #ff9a00); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .bar { display: inline-block; padding: 10px 36px 6px; font-size: 64px; transform: rotate(-4deg) skewX(-6deg); }
+      .red { background: #c3202f; color: #fff; }
+      .teal { background: #0b9396; color: #111; }
+      #q { position: absolute; left: 640px; top: 470px; font-size: 220px; color: #fff; text-shadow: 0 8px 0 rgba(0,0,0,.25); }
+      #counter { position: absolute; left: 0; top: 1580px; width: 1080px; text-align: center; opacity: 0; }
+      #counter .bar { font-size: 72px; }
+      #c2 .hat, #c3 .hat, #c4 .hat { opacity: 1; }
+      #legend { position: absolute; left: 0; top: 330px; width: 1080px; text-align: center; transform: scale(0); }
+      #legend .bar { font-size: 96px; }
+      #cam { position: absolute; inset: 0; transform-origin: 540px 760px; }
+      #wall { position: absolute; inset: 0; background: #0f1418; }
+      .tile { position: absolute; width: 140px; height: 140px; }
+      #wallbox { position: absolute; left: 0; top: 640px; width: 1080px; height: 560px; background: rgba(11,12,12,.88); }
+      .rays { position: absolute; left: -460px; top: -300px; width: 2000px; height: 2000px; fill: #fff; opacity: 0; }
+      #logo { position: absolute; left: 90px; top: 520px; width: 900px; }
+      #play { position: absolute; left: 330px; top: 1000px; width: 420px; filter: drop-shadow(0 12px 24px rgba(0,0,0,.45)); }
+      #flash { position: absolute; inset: 0; background: #fff; opacity: 0; z-index: 60; pointer-events: none; }
+      #vig { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,.4) 100%); z-index: 40; pointer-events: none; }
+      #wipe { position: absolute; left: 0; top: 0; width: 1600px; height: 1920px; z-index: 50; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="15" data-width="1080" data-height="1920">
+      <div id="shk" class="clip" data-start="0" data-duration="15" data-track-index="0">
+        <div id="sA" class="clip scene sky" data-start="0" data-duration="8.732" data-track-index="1">
+          <div id="cam">
+            <div class="sun" style="left:120px;top:880px"></div>
+            <svg class="hills" viewBox="0 0 1080 900" preserveAspectRatio="none"><polygon fill="#58735e" points="0,900 0,560 140,380 260,560 400,300 560,560 700,420 860,560 980,340 1080,480 1080,900" /><polygon fill="#2f6b4a" points="0,900 0,700 90,560 180,700 330,520 470,720 640,600 780,720 900,560 1080,740 1080,900" /></svg>
+            <svg class="rays" id="ray1" viewBox="-1000 -1000 2000 2000"><polygon points="0,0 1398,-73 1398,73" /><polygon points="0,0 1339,409 1289,547" /><polygon points="0,0 1118,843 1024,955" /><polygon points="0,0 762,1174 636,1247" /><polygon points="0,0 315,1364 171,1390" /><polygon points="0,0 -171,1390 -315,1364" /><polygon points="0,0 -636,1247 -762,1174" /><polygon points="0,0 -1024,955 -1118,843" /><polygon points="0,0 -1289,547 -1339,409" /><polygon points="0,0 -1398,73 -1398,-73" /><polygon points="0,0 -1339,-409 -1289,-547" /><polygon points="0,0 -1118,-843 -1024,-955" /><polygon points="0,0 -762,-1174 -636,-1247" /><polygon points="0,0 -315,-1364 -171,-1390" /><polygon points="0,0 171,-1390 315,-1364" /><polygon points="0,0 636,-1247 762,-1174" /><polygon points="0,0 1024,-955 1118,-843" /><polygon points="0,0 1289,-547 1339,-409" /></svg>
+            <div class="ground"></div>
+            <div class="char" id="c1" style="left:160px;top:640px;transform:scale(2.2)"><div class="bob" id="c1b"><img class="stick" src="img/stick.png" /><img class="body" src="img/body.png" /><img class="hat" id="c1h0" src="img/hatfit/h00.png" style="left:163.0px;top:-26.0px;width:112.0px;height:112.0px" /><img class="hat" id="c1h1" src="img/hatfit/h01.png" style="left:163.0px;top:-26.0px;width:112.0px;height:112.0px" /><img class="hat" id="c1h2" src="img/hatfit/h02.png" style="left:163.0px;top:-26.0px;width:112.0px;height:112.0px" /><img class="hat" id="c1h3" src="img/hatfit/h03.png" style="left:163.0px;top:-26.0px;width:112.0px;height:112.0px" /><img class="hat" id="c1h4" src="img/hatfit/h04.png" style="left:163.0px;top:-26.0px;width:112.0px;height:112.0px" /><img class="hat" id="c1h5" src="img/hatfit/h05.png" style="left:163.0px;top:-26.0px;width:112.0px;height:112.0px" /><img class="hat" id="c1h6" src="img/hatfit/h06.png" style="left:163.0px;top:-26.0px;width:112.0px;height:112.0px" /><img class="hat" id="c1h7" src="img/hatfit/h08.png" style="left:163.0px;top:-26.0px;width:112.0px;height:112.0px" /><img class="hat" id="c1h8" src="img/hatfit/h09.png" style="left:160.0px;top:-9.0px;width:118.0px;height:127.0px" /><img class="hat" id="c1h9" src="img/hatfit/h10.png" style="left:161.0px;top:2.0px;width:116.0px;height:116.0px" /><img class="hat" id="c1h10" src="img/hatfit/h11.png" style="left:161.0px;top:4.7px;width:116.0px;height:113.3px" /><img class="hat" id="c1h11" src="img/hatfit/h12.png" style="left:163.0px;top:-26.0px;width:112.0px;height:112.0px" /><img class="hat" id="c1h12" src="img/hatfit/h13.png" style="left:163.0px;top:-26.0px;width:112.0px;height:112.0px" /><img class="hat" id="c1h13" src="img/hatfit/h14.png" style="left:163.0px;top:-26.0px;width:112.0px;height:112.0px" /><img class="hat" id="c1h14" src="img/hatfit/h15.png" style="left:163.0px;top:-26.0px;width:112.0px;height:112.0px" /><img class="hat" id="c1h15" src="img/hatfit/h16.png" style="left:161.0px;top:2.0px;width:116.0px;height:116.0px" /><img class="hat" id="c1h16" src="img/hatfit/h17.png" style="left:161.0px;top:2.0px;width:116.0px;height:116.0px" /><img class="hat" id="c1h17" src="img/hatfit/h18.png" style="left:161.0px;top:2.0px;width:116.0px;height:116.0px" /><img class="hat" id="c1h18" src="img/hatfit/h19.png" style="left:161.0px;top:2.0px;width:116.0px;height:116.0px" /><img class="hat" id="c1h19" src="img/hatfit/h20.png" style="left:161.0px;top:2.0px;width:116.0px;height:116.0px" /><img class="hat" id="c1h20" src="img/hatfit/h21.png" style="left:161.0px;top:2.0px;width:116.0px;height:116.0px" /><img class="hat" id="c1h21" src="img/hatfit/h22.png" style="left:161.0px;top:2.0px;width:116.0px;height:116.0px" /><img class="hat" id="c1h22" src="img/hatfit/h23.png" style="left:161.0px;top:2.0px;width:116.0px;height:116.0px" /><img class="hat" id="c1h23" src="img/hatfit/h24.png" style="left:161.0px;top:2.0px;width:116.0px;height:116.0px" /><img class="hat" id="c1h24" src="img/hatfit/h25.png" style="left:161.0px;top:2.0px;width:116.0px;height:116.0px" /><img class="hat" id="c1h25" src="img/hatfit/h26.png" style="left:161.0px;top:2.0px;width:116.0px;height:116.0px" /><img class="hat" id="c1h26" src="img/hatfit/h27.png" style="left:161.0px;top:2.0px;width:116.0px;height:116.0px" /><img class="hat" id="c1h27" src="img/hatfit/h28.png" style="left:161.0px;top:2.0px;width:116.0px;height:116.0px" /><img class="hat" id="c1h28" src="img/hatfit/h29.png" style="left:161.0px;top:2.0px;width:116.0px;height:116.0px" /><img class="hat" id="c1h29" src="img/hatfit/h00.png" style="left:163.0px;top:-26.0px;width:112.0px;height:112.0px" /><img class="hat" id="c1h30" src="img/hatfit/h01.png" style="left:163.0px;top:-26.0px;width:112.0px;height:112.0px" /><img class="hat" id="c1h31" src="img/hatfit/h03.png" style="left:163.0px;top:-26.0px;width:112.0px;height:112.0px" /></div></div>
+            <div id="q">?</div>
+          </div>
+          <div class="head" id="h1" style="top:240px"><span class="w">WHICH HAT</span><br><span class="y">ARE YOU?</span></div>
+          <div id="counter"><span class="bar red">HAT #<span id="cnum">001</span></span></div>
+          <div id="legend"><span class="bar teal">LEGENDARY!</span></div>
+        </div>
+        <div id="sB" class="clip scene" data-start="8.732" data-duration="2.577" data-track-index="1">
+          <div id="wall"><img class="tile" src="img/hats/h00.png" style="left:20px;top:150px" /><img class="tile" src="img/hats/h08.png" style="left:200px;top:150px" /><img class="tile" src="img/hats/h15.png" style="left:380px;top:150px" /><img class="tile" src="img/hats/h22.png" style="left:560px;top:150px" /><img class="tile" src="img/hats/h29.png" style="left:740px;top:150px" /><img class="tile" src="img/hats/h06.png" style="left:920px;top:150px" /><img class="tile" src="img/hats/h14.png" style="left:20px;top:330px" /><img class="tile" src="img/hats/h21.png" style="left:200px;top:330px" /><img class="tile" src="img/hats/h28.png" style="left:380px;top:330px" /><img class="tile" src="img/hats/h05.png" style="left:560px;top:330px" /><img class="tile" src="img/hats/h13.png" style="left:740px;top:330px" /><img class="tile" src="img/hats/h20.png" style="left:920px;top:330px" /><img class="tile" src="img/hats/h27.png" style="left:20px;top:510px" /><img class="tile" src="img/hats/h04.png" style="left:200px;top:510px" /><img class="tile" src="img/hats/h12.png" style="left:380px;top:510px" /><img class="tile" src="img/hats/h19.png" style="left:560px;top:510px" /><img class="tile" src="img/hats/h26.png" style="left:740px;top:510px" /><img class="tile" src="img/hats/h03.png" style="left:920px;top:510px" /><img class="tile" src="img/hats/h11.png" style="left:20px;top:690px" /><img class="tile" src="img/hats/h18.png" style="left:200px;top:690px" /><img class="tile" src="img/hats/h25.png" style="left:380px;top:690px" /><img class="tile" src="img/hats/h02.png" style="left:560px;top:690px" /><img class="tile" src="img/hats/h10.png" style="left:740px;top:690px" /><img class="tile" src="img/hats/h17.png" style="left:920px;top:690px" /><img class="tile" src="img/hats/h24.png" style="left:20px;top:870px" /><img class="tile" src="img/hats/h01.png" style="left:200px;top:870px" /><img class="tile" src="img/hats/h09.png" style="left:380px;top:870px" /><img class="tile" src="img/hats/h16.png" style="left:560px;top:870px" /><img class="tile" src="img/hats/h23.png" style="left:740px;top:870px" /><img class="tile" src="img/hats/h00.png" style="left:920px;top:870px" /><img class="tile" src="img/hats/h08.png" style="left:20px;top:1050px" /><img class="tile" src="img/hats/h15.png" style="left:200px;top:1050px" /><img class="tile" src="img/hats/h22.png" style="left:380px;top:1050px" /><img class="tile" src="img/hats/h29.png" style="left:560px;top:1050px" /><img class="tile" src="img/hats/h06.png" style="left:740px;top:1050px" /><img class="tile" src="img/hats/h14.png" style="left:920px;top:1050px" /><img class="tile" src="img/hats/h21.png" style="left:20px;top:1230px" /><img class="tile" src="img/hats/h28.png" style="left:200px;top:1230px" /><img class="tile" src="img/hats/h05.png" style="left:380px;top:1230px" /><img class="tile" src="img/hats/h13.png" style="left:560px;top:1230px" /><img class="tile" src="img/hats/h20.png" style="left:740px;top:1230px" /><img class="tile" src="img/hats/h27.png" style="left:920px;top:1230px" /><img class="tile" src="img/hats/h04.png" style="left:20px;top:1410px" /><img class="tile" src="img/hats/h12.png" style="left:200px;top:1410px" /><img class="tile" src="img/hats/h19.png" style="left:380px;top:1410px" /><img class="tile" src="img/hats/h26.png" style="left:560px;top:1410px" /><img class="tile" src="img/hats/h03.png" style="left:740px;top:1410px" /><img class="tile" src="img/hats/h11.png" style="left:920px;top:1410px" /><img class="tile" src="img/hats/h18.png" style="left:20px;top:1590px" /><img class="tile" src="img/hats/h25.png" style="left:200px;top:1590px" /><img class="tile" src="img/hats/h02.png" style="left:380px;top:1590px" /><img class="tile" src="img/hats/h10.png" style="left:560px;top:1590px" /><img class="tile" src="img/hats/h17.png" style="left:740px;top:1590px" /><img class="tile" src="img/hats/h24.png" style="left:920px;top:1590px" /></div>
+          <div id="wallbox"></div>
+          <div class="head" id="h3" style="top:700px"><span class="y" style="font-size:230px">240+</span><br><span class="w">COSMETICS.</span></div>
+          <div class="head" id="h3b" style="top:1060px"><span class="bar red">HUNDREDS OF HATS.</span></div>
+        </div>
+        <div id="sC" class="clip scene sky" data-start="11.309" data-duration="2.148" data-track-index="1">
+          <svg class="hills" viewBox="0 0 1080 900" preserveAspectRatio="none"><polygon fill="#58735e" points="0,900 0,560 140,380 260,560 400,300 560,560 700,420 860,560 980,340 1080,480 1080,900" /><polygon fill="#2f6b4a" points="0,900 0,700 90,560 180,700 330,520 470,720 640,600 780,720 900,560 1080,740 1080,900" /></svg>
+          <div class="ground"></div>
+          <div class="char" id="c2" style="left:-60px;top:900px;transform:scale(1.6)"><div class="bob" id="c2b"><img class="stick" src="img/stick.png" /><img class="body" src="img/body.png" /><img class="hat" id="c2h0" src="img/hatfit/h04.png" style="left:163.0px;top:-26.0px;width:112.0px;height:112.0px" /></div></div>
+          <div class="char" id="c3" style="left:270px;top:870px;transform:scale(1.6)"><div class="bob" id="c3b"><img class="stick" src="img/stick.png" /><img class="body" src="img/body.png" /><img class="hat" id="c3h0" src="img/hatfit/h03.png" style="left:163.0px;top:-26.0px;width:112.0px;height:112.0px" /></div></div>
+          <div class="char" id="c4" style="left:600px;top:900px;transform:scale(1.6)"><div class="bob" id="c4b"><img class="stick" src="img/stick.png" /><img class="body" src="img/body.png" /><img class="hat" id="c4h0" src="img/hatfit/h16.png" style="left:161.0px;top:2.0px;width:116.0px;height:116.0px" /></div></div>
+          <div class="head" id="h4" style="top:250px"><span class="w">FIND YOUR</span><br><span class="y">STYLE.</span></div>
+          <div class="head" id="h4b" style="top:560px"><span class="bar teal">190+ HATS TO UNLOCK</span></div>
+        </div>
+        <div id="sD" class="clip scene" data-start="13.457" data-duration="1.543" data-track-index="1" style="background: radial-gradient(circle at 50% 40%, #8a9a74, #4e6352 75%)">
+          <svg class="rays" id="ray5" viewBox="-1000 -1000 2000 2000"><polygon points="0,0 1398,-73 1398,73" /><polygon points="0,0 1339,409 1289,547" /><polygon points="0,0 1118,843 1024,955" /><polygon points="0,0 762,1174 636,1247" /><polygon points="0,0 315,1364 171,1390" /><polygon points="0,0 -171,1390 -315,1364" /><polygon points="0,0 -636,1247 -762,1174" /><polygon points="0,0 -1024,955 -1118,843" /><polygon points="0,0 -1289,547 -1339,409" /><polygon points="0,0 -1398,73 -1398,-73" /><polygon points="0,0 -1339,-409 -1289,-547" /><polygon points="0,0 -1118,-843 -1024,-955" /><polygon points="0,0 -762,-1174 -636,-1247" /><polygon points="0,0 -315,-1364 -171,-1390" /><polygon points="0,0 171,-1390 315,-1364" /><polygon points="0,0 636,-1247 762,-1174" /><polygon points="0,0 1024,-955 1118,-843" /><polygon points="0,0 1289,-547 1339,-409" /></svg>
+          <img id="logo" src="img/logo.png" />
+          <img id="play" src="img/play.png" />
+          <div class="head" id="h5" style="top:1300px"><span class="bar red" style="font-size:80px">PLAY NOW.</span></div>
+        </div>
+      </div>
+      <div id="vig" class="clip" data-start="0" data-duration="15" data-track-index="3"></div>
+      <div id="flash" class="clip" data-start="0" data-duration="15" data-track-index="4"></div>
+      <svg id="wipe" class="clip" data-start="0" data-duration="15" data-track-index="2" viewBox="0 0 2400 1080" preserveAspectRatio="none"><polygon points="0,0 110,140 30,260 140,420 60,560 170,700 40,860 130,1080 2280,1080 2370,900 2250,760 2350,600 2240,430 2360,280 2270,120 2380,0" fill="#0b0c0c" /></svg>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const seen = {};
+      const ft = (sel, from, to, t) => { to.immediateRender = !seen[sel]; seen[sel] = true; tl.fromTo(sel, from, to, t); };
+      const shake = (sel, t, a) => tl.to(sel, { x: a, y: -a * 0.6, duration: 0.04, ease: "sine.inOut", yoyo: true, repeat: 5 }, t);
+      const flash = (t, p) => ft("#flash", { opacity: p }, { opacity: 0, duration: 0.35, ease: "expo.out" }, t);
+      const slam = (sel, t) => ft(sel, { scale: 2.4, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.38, ease: "power4.in" }, t - 0.38);
+      const B = k => 0.14 + k * 0.4295840194744756;
+      const swaps = [2.288, 2.718, 3.147, 3.577, 4.006, 4.221, 4.436, 4.651, 4.865, 5.08, 5.295, 5.51, 5.725, 5.832, 5.939, 6.047, 6.154, 6.262, 6.369, 6.476, 6.584, 6.691, 6.799, 6.906, 7.013, 7.121, 7.228, 7.336, 7.443, 7.55, 7.658, 7.765];
+      // 1 Hook: hatless rider bobbing on the beat, question mark, headline slam
+      ft("#c1", { y: 900 }, { y: 0, duration: 0.6, ease: "power3.out" }, 0);
+      tl.to("#c1b", { y: -70, duration: 0.215, ease: "power2.out", yoyo: true, repeat: 33 }, B(0));
+      ft("#q", { scale: 0, rotation: -30 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(3)" }, B(2));
+      tl.to("#q", { rotation: 12, duration: 0.430, ease: "sine.inOut", yoyo: true, repeat: 3 }, B(3));
+      tl.to("#q", { scale: 0, duration: 0.2, ease: "power2.in" }, B(5) - 0.2);
+      slam("#h1", B(1)); shake("#shk", B(1), 12); flash(B(1), 0.4);
+      tl.to("#h1", { y: -40, opacity: 0, duration: 0.25, ease: "power2.in" }, B(5) - 0.25);
+      // 2 Hat roulette: swap on the beat, accelerating; counter climbs; camera pushes in
+      swaps.forEach((t, i) => {
+        if (i > 0) tl.set("#c1h" + (i - 1), { opacity: 0 }, t);
+        const gap = i < swaps.length - 1 ? swaps[i + 1] - t : 0.3;
+        ft("#c1h" + i, { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: Math.min(0.16, gap * 0.8), ease: "back.out(3)" }, t);
+      });
+      ft("#cam", { scale: 1 }, { scale: 1.22, duration: B(18) - B(5), ease: "power2.in" }, B(5));
+      ft("#counter", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, B(5));
+      const cnt = { v: 1 };
+      ft(cnt, { v: 1 }, { v: 190, duration: B(18) - B(5), ease: "power2.in", onUpdate: () => { document.getElementById("cnum").textContent = String(Math.round(cnt.v)).padStart(3, "0"); } }, B(5));
+      // crown lands: big hit
+      shake("#shk", B(18), 18); flash(B(18), 0.6);
+      ft("#ray1", { opacity: 0, rotation: 0 }, { opacity: 0.22, rotation: 30, duration: 1.2, ease: "sine.inOut" }, B(18));
+      ft("#legend", { scale: 0, rotation: 10 }, { scale: 1, rotation: -4, duration: 0.35, ease: "back.out(3)" }, B(18.5));
+      // 3 Hat wall
+      ft(".tile", { scale: 0, rotation: 30 }, { scale: 1, rotation: 0, duration: 0.35, ease: "back.out(2.5)", stagger: { each: 0.012, from: "center", grid: [9, 6] } }, B(20));
+      ft("#wallbox", { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: "expo.out" }, B(22) - 0.3);
+      slam("#h3", B(22)); shake("#shk", B(22), 14); flash(B(22), 0.45);
+      ft("#h3b", { x: -1100 }, { x: 0, duration: 0.4, ease: "power3.out" }, B(23));
+      tl.to("#wall", { scale: 1.08, duration: B(26) - B(20), ease: "sine.inOut" }, B(20));
+      // 4 Three looks
+      [0, 1, 2].forEach(k => {
+        ft("#c" + (k + 2), { y: 1200 }, { y: 0, duration: 0.45, ease: "power3.out" }, B(26 + k) - 0.2);
+        tl.to("#c" + (k + 2) + "b", { y: -50, duration: 0.215, ease: "power2.out", yoyo: true, repeat: 7 - 2 * k }, B(27 + k));
+      });
+      slam("#h4", B(29)); shake("#shk", B(29), 10); flash(B(29), 0.35);
+      ft("#h4b", { x: 1100 }, { x: 0, duration: 0.4, ease: "power3.out" }, B(30));
+      // 5 Outro
+      ft("#logo", { y: -900, scale: 1.6 }, { y: 0, scale: 1, duration: 0.35, ease: "power4.in" }, B(31) - 0.35);
+      tl.to("#logo", { scaleY: 0.86, scaleX: 1.08, duration: 0.1, ease: "power2.out", yoyo: true, repeat: 1 }, B(31));
+      shake("#shk", B(31), 14); flash(B(31), 0.6);
+      ft("#ray5", { opacity: 0, rotation: 0 }, { opacity: 0.2, rotation: 30, duration: 1.6, ease: "sine.inOut" }, B(31));
+      ft("#play", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(2.5)" }, B(32));
+      tl.to("#play", { scale: 1.1, duration: 0.215, ease: "sine.inOut", yoyo: true, repeat: 3 }, B(33));
+      ft("#h5", { x: -1100 }, { x: 0, duration: 0.4, ease: "power3.out" }, B(33));
+      // Jagged wipes into scene 4 and the outro
+      [B(26), B(31)].forEach(c => {
+        ft("#wipe", { x: 1080 }, { x: -260, duration: 0.25, ease: "power3.in" }, c - 0.25);
+        tl.to("#wipe", { x: -1700, duration: 0.4, ease: "expo.out" }, c);
+      });
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
