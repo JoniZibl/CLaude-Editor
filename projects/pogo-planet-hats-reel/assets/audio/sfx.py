@@ -1,7 +1,7 @@
 # SFX track for the hats reel, timed to the composition's beat grid.
 import numpy as np, wave, pathlib
 SR=44100; N=SR*15; rng=np.random.default_rng(3); out=np.zeros(N)
-B=lambda k: 0.14+k*60/139.67
+B=lambda k: -0.0146+k*60/139.67
 tt=lambda d: np.arange(int(SR*d))/SR
 def add(sig,t,g):
     i=int(t*SR); j=min(N,i+len(sig)); out[i:j]+=sig[:j-i]*g

@@ -1,7 +1,7 @@
 # Generates index.html for the "Which hat are you?" reel (1080x1920, 15 s).
 import math, pathlib
 HERE = pathlib.Path(__file__).parent
-B0, P = 0.14, 60 / 139.67          # song beat grid (measured)
+B0, P = -0.0146, 60 / 139.67       # beat grid of "GLOSS" (measured, first beat ~0 s)
 b = lambda k: round(B0 + k * P, 3)
 HATS = [f"img/hats/h{i:02d}.png" for i in range(30) if i != 7]   # 29 hats
 CROWN, VIKING, TIGER = "img/hats/h03.png", "img/hats/h04.png", "img/hats/h16.png"
@@ -37,7 +37,7 @@ js = f"""
       const swaps = {swaps};
       // 1 Hook: hatless rider bobbing on the beat, question mark, headline slam
       ft("#c1", {{ y: 900 }}, {{ y: 0, duration: 0.6, ease: "power3.out" }}, 0);
-      tl.to("#c1b", {{ y: -70, duration: {P/2:.3f}, ease: "power2.out", yoyo: true, repeat: 33 }}, B(0));
+      tl.to("#c1b", {{ y: -70, duration: {P/2:.3f}, ease: "power2.out", yoyo: true, repeat: 33 }}, 0);
       ft("#q", {{ scale: 0, rotation: -30 }}, {{ scale: 1, rotation: 0, duration: 0.4, ease: "back.out(3)" }}, B(2));
       tl.to("#q", {{ rotation: 12, duration: {P:.3f}, ease: "sine.inOut", yoyo: true, repeat: 3 }}, B(3));
       tl.to("#q", {{ scale: 0, duration: 0.2, ease: "power2.in" }}, B(5) - 0.2);
