@@ -1,6 +1,6 @@
 # Layered stereo SFX for the block-chaos reel, timed to the beat grid of "Clowns" (120.19 BPM from 0:16.52).
 import numpy as np, wave, pathlib
-SR = 44100; N = SR * 15; rng = np.random.default_rng(5)
+SR = 44100; N = int(SR * 18.5); rng = np.random.default_rng(5)
 L = np.zeros(N); R = np.zeros(N); P = 60 / 120.19; B = lambda k: k * P
 tt = lambda d: np.arange(int(SR * d)) / SR
 def lp(x, fc):
@@ -37,20 +37,20 @@ def scratch():         # record-scratch freeze
 def riser(d):
     t = tt(d); return (lp(rng.standard_normal(len(t)), 400 + 6000 * (t / d) ** 2) * 0.6 + np.sin(2 * np.pi * np.cumsum(200 + 700 * (t / d) ** 2) / SR) * .25) * (t / d) ** 2.5
 
+def tap():
+    t = tt(0.05); return hp(rng.standard_normal(len(t)), 3500) * np.exp(-t * 200) * 0.6 + np.sin(2 * np.pi * 1800 * t) * np.exp(-t * 90) * 0.4
 add(impact(), B(1), 0.7)
-for k, (t, pan) in enumerate([(B(3), -.4), (B(3.5), 0), (B(4), .4), (B(7), 0), (B(11), 0), (B(15), .2)]): add(clack(1 + .06 * k), t, .75, pan)
-add(rumble(), B(5.6), .55); add(clack(1.1), B(6.5), .5)
-for k in range(6): add(whoosh(.3), B(8 + k) - .05, .12, -.6 if k % 2 else .6)
-for k in [12, 13, 14, 15]: add(ratchet(), B(k) - .1, .6)
-for k in range(4): add(clack(.8), B(16) + k * .3, .25)
-for c in [2.4, 6.6, 10.6, 14.6]: add(whoosh(.45), B(c), .35, .3)
-add(whoosh(.8), B(16.6), .4, -.3)
-add(land(), B(18), .8)
-for i in range(1, 7):
-    add(spring(), B(17.6 + i), .5, -.3 + .1 * i); add(land(), B(17.6 + i) + P * .85, .6)
-for i in range(3): add(rumble(), B(18.6 + i + 1) + .12, .4, -.2 + .2 * i)
-add(ratchet(), B(23.9), .5); add(spring(), B(25.2), .55); add(riser(1.0), B(25.2), .3)
-add(scratch(), B(26.6), .7); add(impact(), B(26.8), .75); add(impact(True), B(28.2), .9); add(whoosh(.35), B(28.6), .35)
+for k, (t, pan) in enumerate([(B(3), -.4), (B(4), 0), (B(5), .4), (B(9), 0), (B(15), .2), (B(20), 0), (B(25), .2)]): add(clack(1 + .05 * k), t, .75, pan)
+for t in [B(6), B(17)]: add(tap(), t, .7)
+add(rumble(), B(6.6), .55); add(clack(1.1), B(8), .5)
+for k in range(8): add(whoosh(.3), B(10.5 + k) - .05, .12, -.6 if k % 2 else .6)
+add(whoosh(.6), B(17.3), .3, .4); add(whoosh(.6), B(18.8), .3, -.4)
+for k in [21, 22, 23, 24]: add(ratchet(), B(k) - .1, .6)
+for k in range(4): add(clack(.8), B(26.2) + k * .3, .25)
+for c in [2.4, 8.6, 14.6, 19.6, 24.6]: add(whoosh(.45), B(c), .35, .3)
+add(whoosh(.8), B(28.6), .4, -.3)
+for k in range(30, 36): add(ratchet(), B(k) - .1, .4, .3)
+add(impact(), B(31), .8); add(impact(True), B(33.5), .9); add(whoosh(.35), B(34), .35)
 ir_t = tt(1.0); irL = lp(rng.standard_normal(len(ir_t)) * np.exp(-ir_t * 5), 5000); irR = lp(rng.standard_normal(len(ir_t)) * np.exp(-ir_t * 5), 5000)
 conv = lambda x, ir: np.fft.irfft(np.fft.rfft(x, N + len(ir)) * np.fft.rfft(ir, N + len(ir)))[:N]
 wl, wr = conv(L, irL), conv(R, irR); g = .16 * np.max(np.abs(L)) / np.max(np.abs(wl))
