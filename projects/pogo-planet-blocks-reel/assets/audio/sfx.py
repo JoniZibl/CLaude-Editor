@@ -18,8 +18,9 @@ def tock(f=520):        # block placed: soft rounded sine with a hint of overton
     t = tt(0.35); return (np.sin(2 * np.pi * f * t) + 0.25 * np.sin(2 * np.pi * 2 * f * t) * np.exp(-t * 30)) * env(t, 0.002, 0.07)
 def click(f=1900):      # rotation step / tap: tiny, clean
     t = tt(0.06); return np.sin(2 * np.pi * f * t) * env(t, 0.0005, 0.012)
-def swish(d=0.5):       # camera move: airy, low-passed, very soft
-    t = tt(d); return lp(rng.standard_normal(len(t)), 600 + 1800 * np.sin(np.pi * t / d)) * np.sin(np.pi * t / d) ** 3 * 1.8
+def swish(d=0.22, f0=520, f1=780):  # camera move: clean sine glide, no noise
+    t = tt(d + 0.25); f = f0 + (f1 - f0) * np.clip(t / d, 0, 1) ** 0.6
+    return np.sin(2 * np.pi * np.cumsum(f) / SR) * env(t, 0.02, 0.09) * 0.55
 def thud():             # block falling away: low, soft
     t = tt(0.5); return np.sin(2 * np.pi * np.cumsum(140 * np.exp(-t * 3) + 50) / SR) * env(t, 0.004, 0.12)
 def glide(up=True):     # touch-moving block travelling
@@ -39,8 +40,8 @@ for t in [B(6), B(17)]: add(click(2200), t, 0.5)
 add(thud(), B(6.6), 0.6); add(tock(560), B(8), 0.45)
 add(glide(True), B(17.3), 0.6, .2); add(glide(False), B(18.8), 0.6, .2)
 for k in [21, 22, 23, 24]: add(click(1600), B(k) - .1, 0.45)
-for c in [2.4, 8.6, 14.6, 19.6, 24.6]: add(swish(0.55), B(c), 0.25)
-add(swish(0.9), B(28.6), 0.3)
+for c in [2.4, 8.6, 14.6, 19.6, 24.6]: add(swish(), B(c) + 0.15, 0.3)
+add(swish(0.4, 700, 420), B(28.6) + 0.2, 0.3)
 add(hit(), B(31), 0.8); add(chime(), B(33.5), 0.6)
 
 # light room reverb
