@@ -6,7 +6,7 @@ import numpy as np
 from PIL import Image
 HEAD_CX, HEAD_CY, HEAD_D = 217, 75, 62
 MASK = {9, 10, 11} | set(range(16, 29))           # h29 crab is worn like a hat in-game
-TUNE = {6: dict(scale=0.85), 13: dict(scale=0.9), 12: dict(scale=0.9), 29: dict(drop=6), 14: dict(drop=6), 9: dict(dx=-8)}
+TUNE = {6: dict(scale=0.9), 9: dict(dx=-8), 29: dict(drop=-9), 13: dict(dx=6), 12: dict(drop=4), 3: dict(drop=-3), 1: dict(dx=6), 2: dict(dx=5), 8: dict(dx=6)}
 S = 3
 os.makedirs("img/hatfit", exist_ok=True)
 
@@ -19,11 +19,11 @@ for i in range(30):
     a = alpha(h); ys, xs = np.nonzero(a); hgt = ys.max() - ys.min() + 1
     t = TUNE.get(i, {})
     if i in MASK:
-        k = 104 / h.width * t.get("scale", 1); rot = -8
+        k = 96 / h.width * t.get("scale", 1); rot = -8
     else:
         band = a[int(ys.max() - 0.18 * hgt):]                # bottom 18 % = brim
         brim_w = np.ptp(np.nonzero(band.any(0))[0]) + 1
-        k = min(1.45 * HEAD_D / brim_w, 112 / max(h.size)) * t.get("scale", 1); rot = -12
+        k = min(1.3 * HEAD_D / brim_w, 96 / max(h.size)) * t.get("scale", 1); rot = -10
     hs = h.resize((round(h.width * k * S), round(h.height * k * S)), Image.LANCZOS).rotate(rot, expand=True, resample=Image.BICUBIC)
     A = alpha(hs); ys, xs = np.nonzero(A)
     if i in MASK:
@@ -33,7 +33,7 @@ for i in range(30):
         cut = ys.max() - 0.18 * (ys.max() - ys.min())
         sel = ys >= cut
         cx, cy = xs[sel].mean() / S, ys[sel].mean() / S
-        tx, ty = HEAD_CX + 3, HEAD_CY - 6 + t.get("drop", 0)   # brim rests on the upper half of the head
+        tx, ty = HEAD_CX + 3 + t.get("dx", 0), HEAD_CY + 15 + t.get("drop", 0)   # hat sits low: only the lower third of the head shows
     hs.save(f"img/hatfit/h{i:02d}.png")
     info[f"img/hats/h{i:02d}.png"] = (round(tx - cx, 1), round(ty - cy, 1), round(hs.width / S, 1), round(hs.height / S, 1))
 json.dump(info, open("hatfit.json", "w"))
