@@ -1,0 +1,192 @@
+# Generates index.html for the "Block-Chaos" reel (1080x1920, 15 s).
+import json, pathlib
+HERE = pathlib.Path(__file__).parent
+P = 60 / 120.19                      # beat of "Clowns" from 0:16.52 (first downbeat at 0 s)
+B = lambda k: round(k * P, 3)
+HAT = (165.2, -12.2, 108.7, 110.7)   # crab hat seat (body.png coords), from the hats reel fit
+CS = 0.6                            # character scale in world units
+FEET = (95, 300)                     # stick tip in body.png coords
+
+# World layout (world px). Platforms: (id, left, top, width, height, kind)
+PLAT = [("start", -400, 1300, 660, 700, "ground"), ("f1", 330, 1240, 150, 50, "block"), ("f2", 540, 1170, 150, 50, "block"),
+        ("f3", 750, 1240, 150, 50, "block"), ("mv", 960, 1100, 170, 50, "block"), ("ph", 1520, 1180, 160, 120, "block"),
+        ("goal", 1760, 1020, 700, 980, "ground")]
+ROT = (1350, 1110, 320, 40)
+LAND = [(150, 1300), (405, 1240), (615, 1170), (825, 1240), (1045, 1100), (1350, 1090), (1600, 1180)]
+OVER = (1000, 1230, 0.47)            # overview camera (centre x, centre y, scale)
+
+def plat(p):
+    i, l, t, w, h, k = p
+    return f'<div class="plat {k}" id="{i}" style="left:{l}px;top:{t}px;width:{w}px;height:{h}px"></div>'
+
+def label(i, text):
+    return f'<div class="pill" id="lb{i}"><span class="ring"></span><span class="pt">{text}</span><span class="arr">&#9660;</span></div>'
+
+char = (f'<div id="ch"><div id="chs"><div id="chsc" style="transform:scale({CS})"><div id="chi" style="left:{-FEET[0]}px;top:{-FEET[1]}px">'
+        f'<img src="img/stick.png" style="position:absolute;left:10px;top:49px" /><img src="img/body.png" style="position:absolute;left:0;top:0" />'
+        f'<img src="img/h29.png" style="position:absolute;left:{HAT[0]}px;top:{HAT[1]}px;width:{HAT[2]}px;height:{HAT[3]}px" /></div></div></div></div>')
+
+world = ('<div id="grid"></div>' + "".join(plat(p) for p in PLAT) +
+         f'<div id="rot" style="left:{ROT[0]-ROT[2]/2}px;top:{ROT[1]-ROT[3]/2}px;width:{ROT[2]}px;height:{ROT[3]}px"></div>'
+         f'<div class="pivot" style="left:{ROT[0]-14}px;top:{ROT[1]-14}px"></div>'
+         '<div class="flag" style="left:120px;top:1150px"><div class="cloth green"></div></div>'
+         '<div class="flag" style="left:1880px;top:870px"><div class="cloth check"></div></div>' + char)
+
+def cam(cx, cy, s):  # world transform that centres (cx, cy) at screen (540, 1080)
+    return dict(x=round(540 - s * cx, 1), y=round(1080 - s * cy, 1), scale=s)
+
+O = cam(*OVER)
+js = f"""
+      window.__timelines = window.__timelines || {{}};
+      const tl = gsap.timeline({{ paused: true }});
+      const seen = {{}};
+      const ft = (sel, from, to, t) => {{ to.immediateRender = !seen[sel]; seen[sel] = true; tl.fromTo(sel, from, to, t); }};
+      const P = {P}, B = k => k * P;
+      const shake = (t, a) => tl.to("#shk", {{ x: a, y: -a * 0.6, duration: 0.04, ease: "sine.inOut", yoyo: true, repeat: 5 }}, t);
+      const flash = (t, p) => ft("#flash", {{ opacity: p }}, {{ opacity: 0, duration: 0.3, ease: "expo.out" }}, t);
+      const slam = (sel, t) => ft(sel, {{ scale: 2.3, opacity: 0, rotation: -8 }}, {{ scale: 1, opacity: 1, rotation: 0, duration: 0.36, ease: "power4.in" }}, t - 0.36);
+      const pop = (sel, t) => ft(sel, {{ scale: 0, rotation: -12 }}, {{ scale: 1, rotation: 0, duration: 0.32, ease: "back.out(2.6)" }}, t);
+      const camTo = (c, t, d, e) => tl.to("#world", {{ x: c.x, y: c.y, scale: c.scale, duration: d, ease: e || "power3.inOut" }}, t);
+      const pillIn = (id, t) => ft(id, {{ x: -1400 }}, {{ x: 0, duration: 0.35, ease: "power3.out" }}, t);
+      const pillOut = (id, t) => tl.to(id, {{ x: 1400, duration: 0.25, ease: "power2.in" }}, t);
+      tl.set("#world", {json.dumps(O)}, 0);
+      // 1 Empty level + grid
+      ft("#grid", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.5, ease: "power2.out" }}, 0);
+      slam("#h1", B(1)); shake(B(1), 12); flash(B(1), 0.35);
+      tl.to("#h1", {{ y: -60, opacity: 0, duration: 0.25, ease: "power2.in" }}, B(3) - 0.25);
+      // 2 Touch falling blocks
+      camTo({json.dumps(cam(615, 1210, 1.15))}, B(2.4), 0.6);
+      pillIn("#lb1", B(3)); pop("#f1", B(3)); pop("#f2", B(3.5)); pop("#f3", B(4));
+      tl.to("#f2", {{ x: 6, duration: 0.05, ease: "sine.inOut", yoyo: true, repeat: 7 }}, B(5));
+      tl.to("#f2", {{ y: 700, rotation: 25, duration: 0.6, ease: "power2.in" }}, B(5.6));
+      tl.set("#f2", {{ y: 0, rotation: 0, scale: 0 }}, B(6.5));
+      tl.to("#f2", {{ scale: 1, duration: 0.3, ease: "back.out(2.6)" }}, B(6.5));
+      pillOut("#lb1", B(7) - 0.25);
+      // 3 Moving block
+      camTo({json.dumps(cam(1045, 1150, 1.15))}, B(6.6), 0.55);
+      pillIn("#lb2", B(7)); pop("#mv", B(7));
+      tl.to("#mv", {{ x: 140, duration: P, ease: "sine.inOut", yoyo: true, repeat: 5 }}, B(8));
+      pillOut("#lb2", B(11) - 0.25);
+      // 4 Rotating block, snapping 90 degrees on every beat
+      camTo({json.dumps(cam(1350, 1150, 1.15))}, B(10.6), 0.55);
+      pillIn("#lb3", B(11)); pop("#rot", B(11));
+      [12, 13, 14, 15].forEach((k, i) => tl.to("#rot", {{ rotation: 90 * (i + 1), duration: 0.28, ease: "back.out(2)" }}, B(k) - 0.1));
+      pillOut("#lb3", B(15) - 0.25);
+      // 5 Physics block over the death zone, then zoom out to the whole course
+      camTo({json.dumps(cam(1600, 1260, 1.15))}, B(14.6), 0.55);
+      pillIn("#lb4", B(15)); pop("#ph", B(15));
+      tl.to("#ph", {{ rotation: 14, duration: 0.3, ease: "power2.in", yoyo: true, repeat: 3 }}, B(16));
+      pillOut("#lb4", B(17.2));
+      camTo({json.dumps(O)}, B(16.6), 0.9);
+      // 6 Test run
+      ft("#ch", {{ y: -1500, x: {LAND[0][0]} }}, {{ y: {LAND[0][1]}, x: {LAND[0][0]}, duration: 0.4, ease: "power3.in" }}, B(18) - 0.4);
+      tl.to("#grid", {{ opacity: 0, duration: 0.4, ease: "power2.out" }}, B(18));
+      ft("#hint", {{ opacity: 0, y: 40 }}, {{ opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }}, B(18));
+      tl.to("#hint", {{ opacity: 0, duration: 0.2, ease: "power2.in" }}, B(19.5));
+      const L = {json.dumps(LAND)};
+      const jump = (a, b, t, d, h) => {{
+        tl.to("#ch", {{ x: b[0], duration: d, ease: "sine.inOut" }}, t);
+        tl.to("#ch", {{ y: Math.min(a[1], b[1]) - h, duration: d * 0.5, ease: "power2.out" }}, t);
+        tl.to("#ch", {{ y: b[1], duration: d * 0.5, ease: "power2.in" }}, t + d * 0.5);
+        tl.to("#chs", {{ rotation: 14, duration: d * 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }}, t);
+      }};
+      for (let i = 1; i < L.length; i++) {{
+        const t = B(17.6 + i);  camTo({{ x: 540 - 1.0 * L[i][0], y: 1080 - 1.0 * (L[i][1] - 80), scale: 1.0 }}, t, P * 0.9, "power2.inOut");
+        jump(L[i - 1], L[i], t, P * 0.85, 160);
+      }}
+      ["#f1", "#f2", "#f3"].forEach((id, i) => tl.to(id, {{ y: 800, rotation: i % 2 ? -25 : 25, duration: 0.7, ease: "power2.in" }}, B(18.6 + i + 1) + 0.12));
+      tl.to("#mv", {{ x: 100, duration: P * 0.7, ease: "sine.inOut" }}, B(22.5) + 0.02);
+      tl.to("#ch", {{ x: L[4][0] + 100, duration: P * 0.7, ease: "sine.inOut" }}, B(22.5) + 0.02);
+      tl.to("#rot", {{ rotation: 540, duration: 0.28, ease: "back.out(2)" }}, B(23.9));
+      tl.to("#ph", {{ rotation: 18, duration: 0.35, ease: "power2.in" }}, B(24.6) + 0.06);
+      // final jump: slow-mo towards the goal, freeze at the apex
+      tl.to("#ch", {{ x: 1720, duration: 1.2, ease: "power1.out" }}, B(25.2));
+      tl.to("#ch", {{ y: 900, duration: 1.2, ease: "power3.out" }}, B(25.2));
+      tl.to("#chs", {{ rotation: -10, duration: 1.2, ease: "sine.out" }}, B(25.2));
+      camTo({{ x: 540 - 1.1 * 1700, y: 1080 - 1.1 * 1000, scale: 1.1 }}, B(25.2), 1.2, "power2.out");
+      // 7 Freeze + question + outro
+      ft("#freeze", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.25, ease: "power2.out" }}, B(26.6));
+      slam("#h7", B(26.8)); shake(B(26.8), 14); flash(B(26.8), 0.5);
+      ft("#lgw", {{ y: -500, scale: 1.4, opacity: 0 }}, {{ y: 0, scale: 1, opacity: 1, duration: 0.35, ease: "power4.in" }}, B(28.2) - 0.35);
+      shake(B(28.2), 8);
+      ft("#cta", {{ x: -900 }}, {{ x: 0, duration: 0.35, ease: "power3.out" }}, B(28.6));
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+"""
+
+html = f'''<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="gsap.min.js"></script>
+    <style>
+      @font-face {{ font-family: "Exo2"; src: url("fonts/exo-2-latin-900-italic.woff2") format("woff2"); font-weight: 900; font-style: italic; }}
+      * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+      html, body {{ width: 1080px; height: 1920px; overflow: hidden; background: #0b0c0c; }}
+      #root {{ position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: "Exo2", sans-serif; font-weight: 900; font-style: italic; text-transform: uppercase;
+              background: linear-gradient(180deg, #5f7a66 0%, #95a466 55%, #c9b84a 100%); }}
+      #shk {{ position: absolute; inset: 0; }}
+      .sun {{ position: absolute; left: 700px; top: 640px; width: 230px; height: 230px; border-radius: 50%; background: #f4c63d; box-shadow: 0 0 120px 40px rgba(244,198,61,.35); }}
+      .hills {{ position: absolute; left: 0; bottom: 0; width: 1080px; height: 1000px; }}
+      #world {{ position: absolute; left: 0; top: 0; width: 10px; height: 10px; transform-origin: 0 0; }}
+      #grid {{ position: absolute; left: -600px; top: 500px; width: 3200px; height: 1100px;
+              background-image: linear-gradient(rgba(255,255,255,.22) 2px, transparent 2px), linear-gradient(90deg, rgba(255,255,255,.22) 2px, transparent 2px); background-size: 60px 60px; }}
+      .plat {{ position: absolute; background: #17191a; }}
+      .plat::before {{ content: ""; position: absolute; left: -2px; right: -2px; top: -12px; height: 18px; background: #2f8a55; border-radius: 6px; }}
+      .plat.block {{ border-radius: 6px; transform-origin: 50% 100%; }}
+      #ph {{ transform-origin: 50% 100%; background: #20262b; }}
+      #ph::after {{ content: "!"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #f4c63d; font-size: 70px; }}
+      #rot {{ position: absolute; background: #17191a; border-radius: 10px; box-shadow: inset 0 8px 0 #2f8a55; }}
+      .pivot {{ position: absolute; width: 28px; height: 28px; border-radius: 50%; background: #c3202f; border: 5px solid #fff; }}
+      #lava {{ position: absolute; left: -2000px; top: 1540px; width: 6000px; height: 3000px; background: linear-gradient(#c3202f 0, #6e0f19 260px, #2a070b 700px); }}
+      #lava::before {{ content: ""; position: absolute; left: 0; top: -18px; width: 100%; height: 22px; background: repeating-linear-gradient(90deg, #c3202f 0 40px, transparent 40px 80px); }}
+      .flag {{ position: absolute; width: 10px; height: 150px; background: #e9e4d4; border-radius: 4px; }}
+      .cloth {{ position: absolute; left: 10px; top: 4px; width: 90px; height: 60px; }}
+      .green {{ background: #2f8a55; clip-path: polygon(0 0, 100% 50%, 0 100%); }}
+      .check {{ background: repeating-conic-gradient(#111 0 25%, #fff 0 50%) 0 0 / 30px 30px; }}
+      #ch {{ position: absolute; left: 0; top: 0; }}
+      #chs, #chsc {{ position: absolute; left: 0; top: 0; transform-origin: 0 0; }}
+      #chi {{ position: absolute; width: 330px; height: 380px; }}
+      .head {{ position: absolute; left: 0; width: 1080px; text-align: center; font-size: 150px; line-height: .92; }}
+      .w {{ color: #fbfbf7; }}
+      .y {{ background: linear-gradient(180deg, #ffd400, #ff9a00); -webkit-background-clip: text; background-clip: text; color: transparent; }}
+      .bar {{ display: inline-block; padding: 10px 36px 6px; font-size: 64px; transform: rotate(-4deg) skewX(-6deg); }}
+      .red {{ background: #c3202f; color: #fff; }}
+      .teal {{ background: #0b9396; color: #111; }}
+      .pill {{ position: absolute; left: 90px; top: 300px; width: 900px; height: 120px; border-radius: 26px; background: #1b2330; display: flex; align-items: center; padding: 0 24px; gap: 26px; box-shadow: 0 14px 0 rgba(0,0,0,.25); }}
+      .ring {{ width: 64px; height: 64px; border-radius: 50%; border: 11px solid #fff; flex: none; }}
+      .pt {{ color: #fff; font-size: 50px; white-space: nowrap; flex: 1; letter-spacing: 1px; }}
+      .arr {{ width: 84px; height: 84px; border-radius: 14px; background: #a81e32; color: #f3dada; font-size: 44px; display: flex; align-items: center; justify-content: center; font-style: normal; flex: none; }}
+      #hint {{ position: absolute; left: 0; width: 1080px; top: 330px; text-align: center; opacity: 0; }}
+      #freeze {{ position: absolute; inset: 0; background: rgba(10,12,14,.6); opacity: 0; }}
+      #logocard {{ position: absolute; left: 200px; top: 1130px; width: 680px; height: 330px; border-radius: 36px; background: #e9e4d2; box-shadow: 0 16px 0 rgba(0,0,0,.3); }}
+      #logo {{ position: absolute; left: 260px; top: 1160px; width: 560px; }}
+      #lgw {{ position: absolute; inset: 0; }}
+      #cta {{ position: absolute; left: 0; width: 1080px; top: 1420px; text-align: center; }}
+      #flash {{ position: absolute; inset: 0; background: #fff; opacity: 0; z-index: 60; }}
+      #vig {{ position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,.4) 100%); z-index: 40; }}
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="15" data-width="1080" data-height="1920">
+      <div id="shk" class="clip" data-start="0" data-duration="15" data-track-index="0">
+        <div class="sun"></div>
+        <svg class="hills" viewBox="0 0 1080 1000" preserveAspectRatio="none"><polygon fill="#58735e" points="0,1000 0,560 140,380 260,560 400,300 560,560 700,420 860,560 980,340 1080,480 1080,1000" /><polygon fill="#2f6b4a" points="0,1000 0,700 90,560 180,700 330,520 470,720 640,600 780,720 900,560 1080,740 1080,1000" /></svg>
+        <div id="world"><div id="lava"></div>{world}</div>
+        <div class="head" id="h1" style="top:300px"><span class="w">BUILD THE</span><br><span class="y">WORST LEVEL.</span></div>
+        {label(1, "TOUCH FALLING BLOCK")}{label(2, "MOVING BLOCK")}{label(3, "ROTATING BLOCK")}{label(4, "PHYSICS BLOCK")}
+        <div id="hint"><span class="bar teal">TEST RUN</span></div>
+        <div id="freeze"></div>
+        <div class="head" id="h7" style="top:330px"><span class="w">CAN YOU</span><br><span class="y">MAKE IT?</span></div>
+        <div id="lgw"><div id="logocard"></div><img id="logo" src="img/logo.png" /></div>
+        <div id="cta"><span class="bar red" style="font-size:76px">PLAY NOW.</span></div>
+      </div>
+      <div id="vig" class="clip" data-start="0" data-duration="15" data-track-index="3"></div>
+      <div id="flash" class="clip" data-start="0" data-duration="15" data-track-index="4"></div>
+    </div>
+    <script>{js}    </script>
+  </body>
+</html>
+'''
+(HERE / "index.html").write_text(html)
