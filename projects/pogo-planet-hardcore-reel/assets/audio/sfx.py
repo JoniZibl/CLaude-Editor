@@ -1,6 +1,6 @@
 # Minimal, clean tension SFX for the "Ultra Hardcore" reel (no music).
 import numpy as np, wave, pathlib
-SR = 44100; END = 12.5; N = int(SR * END); rng = np.random.default_rng(9)
+SR = 44100; END = 11.5; N = int(SR * END); rng = np.random.default_rng(9)
 L = np.zeros(N); R = np.zeros(N)
 tt = lambda d: np.arange(int(SR * d)) / SR
 def env(t, a, d): return (1 - np.exp(-t / a)) * np.exp(-t / d)
@@ -27,24 +27,19 @@ def rise(f0, f1, d):
 
 # hook
 add(thump(60, 0.2), 0.27, 0.7); add(tock(660), 0.27, 0.35)
-# each level: tock gets lower, thump heavier
-for i, t in enumerate([1.1, 2.9, 4.7, 6.5]):
-    add(tock([700, 560, 440, 330][i]), t + 0.45, 0.7); add(thump(60 - 4 * i, 0.15 + 0.06 * i), t + 0.45, 0.4 + 0.15 * i)
-    add(rise(500, 760, 0.25), t + 0.45, 0.12)   # meter fill
-# low drone swelling from easy to black
-t = tt(8.6 - 1.1); sw = (t / t[-1]) ** 2
-drone = (np.sin(2 * np.pi * 46 * t) + 0.5 * np.sin(2 * np.pi * 69 * t) + 0.25 * np.sin(2 * np.pi * 92.5 * t + 0.6 * np.sin(2 * np.pi * 0.7 * t))) * sw
-add(drone, 1.1, 0.35)
-# sweat drops (hard)
-for k in range(4): add(click(), 5.0 + 0.7 * k + 0.6, 0.25, 0.4)
-# insane: heartbeat + hearts popping
-for t in [6.95, 7.35, 7.75, 8.15]: add(beat(), t - 0.16, 0.9)
-for t in [7.35, 7.75, 8.15]: add(pop(), t, 0.45, 0.2)
-# black: silence (nothing scheduled 8.6-9.3), hard skull hit
-add(thump(42, 0.6), 9.62, 1.0)
-t = tt(2.5); add((np.sin(2 * np.pi * 110 * t) + np.sin(2 * np.pi * 116.5 * t) + 0.5 * np.sin(2 * np.pi * 164.8 * t)) / 2.5 * env(t, 0.01, 0.9), 9.62, 0.45)
-for k in range(5): add(thump(50, 0.12), 9.62 + 0.9 * (k + 1), 0.35)   # glow pulses
-add(click(), 10.8, 0.4); add(tock(520), 11.3, 0.4)
+# worlds 1-3: tock gets lower, thump heavier
+for i, t in enumerate([1.1, 2.9, 4.7]):
+    add(tock([700, 540, 400][i]), t + 0.45, 0.7); add(thump(60 - 5 * i, 0.15 + 0.08 * i), t + 0.45, 0.45 + 0.18 * i)
+    add(rise(500, 760, 0.25), t + 0.45, 0.12)
+# low drone swelling up to the cut
+t = tt(6.6 - 1.1); sw = (t / t[-1]) ** 2
+add((np.sin(2 * np.pi * 46 * t) + 0.5 * np.sin(2 * np.pi * 69 * t) + 0.25 * np.sin(2 * np.pi * 92.5 * t)) * sw, 1.1, 0.4)
+for k in range(2): add(click(), 5.0 + 0.7 * k + 0.6, 0.25, 0.4)
+# black 6.6-7.2: silence. World 4 INSANE hit
+add(thump(40, 0.6), 7.52, 1.0)
+t = tt(2.5); add((np.sin(2 * np.pi * 110 * t) + np.sin(2 * np.pi * 116.5 * t) + 0.5 * np.sin(2 * np.pi * 164.8 * t)) / 2.5 * env(t, 0.01, 0.9), 7.52, 0.45)
+for d in [0.9, 1.75, 2.6]: add(beat(), 7.2 + d - 0.16, 0.9)
+add(click(), 8.8, 0.4); add(tock(520), 9.4, 0.4)
 # fade the tail into the loop
 fade = np.ones(N); n = int(SR * 0.4); fade[-n:] = np.linspace(1, 0, n); L *= fade; R *= fade
 ir_t = tt(0.9); irL = lp(rng.standard_normal(len(ir_t)) * np.exp(-ir_t * 5), 3500); irR = lp(rng.standard_normal(len(ir_t)) * np.exp(-ir_t * 5), 3500)
