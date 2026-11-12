@@ -37,11 +37,11 @@ for i, w in enumerate(words):
         groups.append(cur); cur = []
 if cur: groups.append(cur)
 
-YEL, WHITE = r"&H0000E5FF&", r"&H00FFFFFF&"
+YEL, WHITE = r"&H003430D4&", r"&H00FFFFFF&"
 lines = []
 for gi, g in enumerate(groups):
-    nxt = groups[gi + 1][0]["start"] if gi + 1 < len(groups) else 1e9
-    g_end = min(g[-1]["end"] + 0.35, nxt)
+    nxt = groups[gi + 1][0]["start"] - 0.05 if gi + 1 < len(groups) else 1e9
+    g_end = min(g[-1]["end"] + 0.15, nxt - 0.02)
     for wi, w in enumerate(g):
         s = w["start"] if wi else max(w["start"] - 0.05, 0)
         e = g[wi + 1]["start"] if wi + 1 < len(g) else g_end
@@ -50,6 +50,7 @@ for gi, g in enumerate(groups):
             t = x["text"].upper().rstrip(",.")
             parts.append(f"{{\\c{YEL if k == wi else WHITE}}}{t}")
         pop = r"{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}" if wi == 0 else ""
+        if e - s < 0.02: continue
         lines.append(f"Dialogue: 0,{ts(s)},{ts(e)},Cap,,0,0,0,,{pop}{' '.join(parts)}")
 
 header = """[Script Info]
