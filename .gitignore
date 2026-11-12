@@ -31,3 +31,4 @@ projects/*/assets/speaker.mp4
 # OS
 .DS_Store
 Thumbs.db
+projects/*/endframe_frames/
