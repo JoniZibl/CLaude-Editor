@@ -62,10 +62,20 @@ ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Q,Inter Display ExtraBold,56,&H00141414,&H00141414,&H00FFFFFF,&H00FFFFFF,0,0,0,0,100,100,0,0,3,22,0,8,90,90,250,1
 Style: Cap,Inter Display Black,92,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,0,0,1,7,4,2,80,80,560,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
+# Question box (top): full sentence, fades in at question start, stays during answers
+QUESTIONS = [
+    (0.05, 22.35, "Machst du etwas, um dich vor\\NGrippe an Karneval zu schützen?"),
+    (22.45, 36.55, "Wusstest du, dass manche\\NApotheken gegen Grippe impfen?"),
+    (36.60, 60.25, "Wäre das eine Option für dich?"),
+]
+for qs, qe, qt in QUESTIONS:
+    lines.append(f"Dialogue: 1,{ts(qs)},{ts(qe)},Q,,0,0,0,,{{\\fad(250,200)}}{qt}")
+
 OUT.write_text(header + "\n".join(lines) + "\n", encoding="utf-8")
 print(f"{len(groups)} groups, {len(lines)} events -> {OUT}")
