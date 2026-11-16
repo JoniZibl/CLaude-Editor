@@ -48,6 +48,7 @@ for gi, g in enumerate(groups):
         parts = []
         for k, x in enumerate(g):
             t = x["text"].upper().rstrip(",.")
+            t = t.replace("MEDIKAMENTENLIEFERUNG", "MEDIKAMENTEN-\\NLIEFERUNG")
             parts.append(f"{{\\c{YEL if k == wi else WHITE}}}{t}")
         pop = r"{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}" if wi == 0 else ""
         if e - s < 0.02: continue
