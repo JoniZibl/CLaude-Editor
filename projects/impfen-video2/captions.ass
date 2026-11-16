@@ -1,0 +1,209 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Q,Inter Display ExtraBold,56,&H00141414,&H00141414,&H00FFFFFF,&H00FFFFFF,0,0,0,0,100,100,0,0,3,22,0,8,90,90,250,1
+Style: Cap,Inter Display Black,92,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,0,0,1,7,4,2,80,80,560,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:02.45,0:00:02.91,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}BOAH
+Dialogue: 0,0:00:02.93,0:00:03.10,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}DAS {\c&H00FFFFFF&}LETZTE {\c&H00FFFFFF&}MAL
+Dialogue: 0,0:00:03.10,0:00:03.42,Cap,,0,0,0,,{\c&H00FFFFFF&}DAS {\c&H003430D4&}LETZTE {\c&H00FFFFFF&}MAL
+Dialogue: 0,0:00:03.42,0:00:03.53,Cap,,0,0,0,,{\c&H00FFFFFF&}DAS {\c&H00FFFFFF&}LETZTE {\c&H003430D4&}MAL
+Dialogue: 0,0:00:03.55,0:00:04.04,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}WAR {\c&H00FFFFFF&}VOR {\c&H00FFFFFF&}PAAR
+Dialogue: 0,0:00:04.04,0:00:04.20,Cap,,0,0,0,,{\c&H00FFFFFF&}WAR {\c&H003430D4&}VOR {\c&H00FFFFFF&}PAAR
+Dialogue: 0,0:00:04.20,0:00:04.29,Cap,,0,0,0,,{\c&H00FFFFFF&}WAR {\c&H00FFFFFF&}VOR {\c&H003430D4&}PAAR
+Dialogue: 0,0:00:04.31,0:00:04.61,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}WOCHEN
+Dialogue: 0,0:00:04.63,0:00:05.43,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}VIELLEICHT
+Dialogue: 0,0:00:05.45,0:00:05.68,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}DAS {\c&H00FFFFFF&}LETZTE {\c&H00FFFFFF&}MAL
+Dialogue: 0,0:00:05.68,0:00:06.00,Cap,,0,0,0,,{\c&H00FFFFFF&}DAS {\c&H003430D4&}LETZTE {\c&H00FFFFFF&}MAL
+Dialogue: 0,0:00:06.00,0:00:06.17,Cap,,0,0,0,,{\c&H00FFFFFF&}DAS {\c&H00FFFFFF&}LETZTE {\c&H003430D4&}MAL
+Dialogue: 0,0:00:06.19,0:00:06.36,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}WAR {\c&H00FFFFFF&}ICH
+Dialogue: 0,0:00:06.36,0:00:06.41,Cap,,0,0,0,,{\c&H00FFFFFF&}WAR {\c&H003430D4&}ICH
+Dialogue: 0,0:00:06.43,0:00:06.68,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}GLAUB {\c&H00FFFFFF&}ICH
+Dialogue: 0,0:00:06.68,0:00:06.75,Cap,,0,0,0,,{\c&H00FFFFFF&}GLAUB {\c&H003430D4&}ICH
+Dialogue: 0,0:00:06.77,0:00:07.02,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}SO {\c&H00FFFFFF&}VOR {\c&H00FFFFFF&}ZWEI
+Dialogue: 0,0:00:07.02,0:00:07.52,Cap,,0,0,0,,{\c&H00FFFFFF&}SO {\c&H003430D4&}VOR {\c&H00FFFFFF&}ZWEI
+Dialogue: 0,0:00:07.52,0:00:07.71,Cap,,0,0,0,,{\c&H00FFFFFF&}SO {\c&H00FFFFFF&}VOR {\c&H003430D4&}ZWEI
+Dialogue: 0,0:00:07.73,0:00:07.96,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}DREI {\c&H00FFFFFF&}WOCHEN {\c&H00FFFFFF&}IN
+Dialogue: 0,0:00:07.96,0:00:08.20,Cap,,0,0,0,,{\c&H00FFFFFF&}DREI {\c&H003430D4&}WOCHEN {\c&H00FFFFFF&}IN
+Dialogue: 0,0:00:08.20,0:00:08.25,Cap,,0,0,0,,{\c&H00FFFFFF&}DREI {\c&H00FFFFFF&}WOCHEN {\c&H003430D4&}IN
+Dialogue: 0,0:00:08.27,0:00:08.50,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}EINER {\c&H00FFFFFF&}APOTHEKE
+Dialogue: 0,0:00:08.50,0:00:09.23,Cap,,0,0,0,,{\c&H00FFFFFF&}EINER {\c&H003430D4&}APOTHEKE
+Dialogue: 0,0:00:09.31,0:00:10.01,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}GESTERN
+Dialogue: 0,0:00:14.37,0:00:14.58,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}ALSO {\c&H00FFFFFF&}ERST {\c&H00FFFFFF&}MAL
+Dialogue: 0,0:00:14.58,0:00:14.74,Cap,,0,0,0,,{\c&H00FFFFFF&}ALSO {\c&H003430D4&}ERST {\c&H00FFFFFF&}MAL
+Dialogue: 0,0:00:14.77,0:00:15.09,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}NATÜRLICH
+Dialogue: 0,0:00:15.11,0:00:15.69,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}MEDIKAMENTE
+Dialogue: 0,0:00:15.71,0:00:16.27,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}ABHOLEN
+Dialogue: 0,0:00:16.29,0:00:16.48,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}ALSO {\c&H00FFFFFF&}REZEPTE
+Dialogue: 0,0:00:16.48,0:00:16.89,Cap,,0,0,0,,{\c&H00FFFFFF&}ALSO {\c&H003430D4&}REZEPTE
+Dialogue: 0,0:00:16.91,0:00:17.85,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}EINLÖSEN
+Dialogue: 0,0:00:17.93,0:00:18.25,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}EINMAL
+Dialogue: 0,0:00:18.27,0:00:19.15,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}MEDIKAMENTENLIEFERUNGEN
+Dialogue: 0,0:00:19.17,0:00:19.36,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}NACH {\c&H00FFFFFF&}HAUSE
+Dialogue: 0,0:00:19.36,0:00:19.85,Cap,,0,0,0,,{\c&H00FFFFFF&}NACH {\c&H003430D4&}HAUSE
+Dialogue: 0,0:00:20.39,0:00:20.72,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}GERADE {\c&H00FFFFFF&}FÜR
+Dialogue: 0,0:00:20.72,0:00:20.77,Cap,,0,0,0,,{\c&H00FFFFFF&}GERADE {\c&H003430D4&}FÜR
+Dialogue: 0,0:00:20.79,0:00:21.16,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}ÄLTERE {\c&H00FFFFFF&}MENSCHEN
+Dialogue: 0,0:00:21.16,0:00:21.71,Cap,,0,0,0,,{\c&H00FFFFFF&}ÄLTERE {\c&H003430D4&}MENSCHEN
+Dialogue: 0,0:00:21.79,0:00:21.96,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}IN {\c&H00FFFFFF&}DER {\c&H00FFFFFF&}APOTHEKE
+Dialogue: 0,0:00:21.96,0:00:22.06,Cap,,0,0,0,,{\c&H00FFFFFF&}IN {\c&H003430D4&}DER {\c&H00FFFFFF&}APOTHEKE
+Dialogue: 0,0:00:22.06,0:00:22.53,Cap,,0,0,0,,{\c&H00FFFFFF&}IN {\c&H00FFFFFF&}DER {\c&H003430D4&}APOTHEKE
+Dialogue: 0,0:00:22.55,0:00:22.82,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}MAN {\c&H00FFFFFF&}KANN {\c&H00FFFFFF&}JA
+Dialogue: 0,0:00:22.82,0:00:23.04,Cap,,0,0,0,,{\c&H00FFFFFF&}MAN {\c&H003430D4&}KANN {\c&H00FFFFFF&}JA
+Dialogue: 0,0:00:23.04,0:00:23.13,Cap,,0,0,0,,{\c&H00FFFFFF&}MAN {\c&H00FFFFFF&}KANN {\c&H003430D4&}JA
+Dialogue: 0,0:00:23.15,0:00:23.54,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}DANN {\c&H00FFFFFF&}AUCH {\c&H00FFFFFF&}EINE
+Dialogue: 0,0:00:23.54,0:00:23.66,Cap,,0,0,0,,{\c&H00FFFFFF&}DANN {\c&H003430D4&}AUCH {\c&H00FFFFFF&}EINE
+Dialogue: 0,0:00:23.66,0:00:23.75,Cap,,0,0,0,,{\c&H00FFFFFF&}DANN {\c&H00FFFFFF&}AUCH {\c&H003430D4&}EINE
+Dialogue: 0,0:00:23.77,0:00:24.06,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}SEHR {\c&H00FFFFFF&}GUTE
+Dialogue: 0,0:00:24.06,0:00:24.27,Cap,,0,0,0,,{\c&H00FFFFFF&}SEHR {\c&H003430D4&}GUTE
+Dialogue: 0,0:00:24.29,0:00:24.90,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}BERATUNG {\c&H00FFFFFF&}NEHMEN
+Dialogue: 0,0:00:24.90,0:00:25.41,Cap,,0,0,0,,{\c&H00FFFFFF&}BERATUNG {\c&H003430D4&}NEHMEN
+Dialogue: 0,0:00:28.17,0:00:28.59,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}NEE
+Dialogue: 0,0:00:28.85,0:00:29.22,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}LEIDER {\c&H00FFFFFF&}WUSSTE
+Dialogue: 0,0:00:29.22,0:00:29.41,Cap,,0,0,0,,{\c&H00FFFFFF&}LEIDER {\c&H003430D4&}WUSSTE
+Dialogue: 0,0:00:29.43,0:00:29.60,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}ICH {\c&H00FFFFFF&}DAS {\c&H00FFFFFF&}NICHT
+Dialogue: 0,0:00:29.60,0:00:29.84,Cap,,0,0,0,,{\c&H00FFFFFF&}ICH {\c&H003430D4&}DAS {\c&H00FFFFFF&}NICHT
+Dialogue: 0,0:00:29.84,0:00:30.11,Cap,,0,0,0,,{\c&H00FFFFFF&}ICH {\c&H00FFFFFF&}DAS {\c&H003430D4&}NICHT
+Dialogue: 0,0:00:30.13,0:00:30.38,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}DASS {\c&H00FFFFFF&}ICH {\c&H00FFFFFF&}MICH
+Dialogue: 0,0:00:30.38,0:00:30.54,Cap,,0,0,0,,{\c&H00FFFFFF&}DASS {\c&H003430D4&}ICH {\c&H00FFFFFF&}MICH
+Dialogue: 0,0:00:30.54,0:00:30.61,Cap,,0,0,0,,{\c&H00FFFFFF&}DASS {\c&H00FFFFFF&}ICH {\c&H003430D4&}MICH
+Dialogue: 0,0:00:30.63,0:00:30.82,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}BEI {\c&H00FFFFFF&}DER {\c&H00FFFFFF&}APOTHEKE
+Dialogue: 0,0:00:30.82,0:00:30.98,Cap,,0,0,0,,{\c&H00FFFFFF&}BEI {\c&H003430D4&}DER {\c&H00FFFFFF&}APOTHEKE
+Dialogue: 0,0:00:30.98,0:00:31.37,Cap,,0,0,0,,{\c&H00FFFFFF&}BEI {\c&H00FFFFFF&}DER {\c&H003430D4&}APOTHEKE
+Dialogue: 0,0:00:31.39,0:00:31.76,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}IMPFEN {\c&H00FFFFFF&}KANN
+Dialogue: 0,0:00:31.76,0:00:31.89,Cap,,0,0,0,,{\c&H00FFFFFF&}IMPFEN {\c&H003430D4&}KANN
+Dialogue: 0,0:00:31.91,0:00:32.32,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}DAS {\c&H00FFFFFF&}WAR {\c&H00FFFFFF&}MIR
+Dialogue: 0,0:00:32.32,0:00:32.50,Cap,,0,0,0,,{\c&H00FFFFFF&}DAS {\c&H003430D4&}WAR {\c&H00FFFFFF&}MIR
+Dialogue: 0,0:00:32.50,0:00:32.59,Cap,,0,0,0,,{\c&H00FFFFFF&}DAS {\c&H00FFFFFF&}WAR {\c&H003430D4&}MIR
+Dialogue: 0,0:00:32.61,0:00:33.12,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}NICHT {\c&H00FFFFFF&}BEWUSST
+Dialogue: 0,0:00:33.12,0:00:33.61,Cap,,0,0,0,,{\c&H00FFFFFF&}NICHT {\c&H003430D4&}BEWUSST
+Dialogue: 0,0:00:33.63,0:00:33.76,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}ICH {\c&H00FFFFFF&}HAB {\c&H00FFFFFF&}DAS
+Dialogue: 0,0:00:33.76,0:00:33.90,Cap,,0,0,0,,{\c&H00FFFFFF&}ICH {\c&H003430D4&}HAB {\c&H00FFFFFF&}DAS
+Dialogue: 0,0:00:33.90,0:00:33.95,Cap,,0,0,0,,{\c&H00FFFFFF&}ICH {\c&H00FFFFFF&}HAB {\c&H003430D4&}DAS
+Dialogue: 0,0:00:33.97,0:00:34.14,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}NOCH {\c&H00FFFFFF&}NICHT
+Dialogue: 0,0:00:34.14,0:00:34.23,Cap,,0,0,0,,{\c&H00FFFFFF&}NOCH {\c&H003430D4&}NICHT
+Dialogue: 0,0:00:34.25,0:00:34.99,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}GEMACHT
+Dialogue: 0,0:00:35.31,0:00:35.46,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}ABER {\c&H00FFFFFF&}ICH {\c&H00FFFFFF&}WÄRE
+Dialogue: 0,0:00:35.46,0:00:35.54,Cap,,0,0,0,,{\c&H00FFFFFF&}ABER {\c&H003430D4&}ICH {\c&H00FFFFFF&}WÄRE
+Dialogue: 0,0:00:35.54,0:00:35.59,Cap,,0,0,0,,{\c&H00FFFFFF&}ABER {\c&H00FFFFFF&}ICH {\c&H003430D4&}WÄRE
+Dialogue: 0,0:00:35.61,0:00:35.76,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}AUF {\c&H00FFFFFF&}JEDEN {\c&H00FFFFFF&}FALL
+Dialogue: 0,0:00:35.76,0:00:35.88,Cap,,0,0,0,,{\c&H00FFFFFF&}AUF {\c&H003430D4&}JEDEN {\c&H00FFFFFF&}FALL
+Dialogue: 0,0:00:35.88,0:00:35.99,Cap,,0,0,0,,{\c&H00FFFFFF&}AUF {\c&H00FFFFFF&}JEDEN {\c&H003430D4&}FALL
+Dialogue: 0,0:00:36.01,0:00:36.40,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}OFFEN {\c&H00FFFFFF&}FÜR
+Dialogue: 0,0:00:36.40,0:00:36.49,Cap,,0,0,0,,{\c&H00FFFFFF&}OFFEN {\c&H003430D4&}FÜR
+Dialogue: 0,0:00:36.51,0:00:36.76,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}ALSO {\c&H00FFFFFF&}WENN {\c&H00FFFFFF&}DIE
+Dialogue: 0,0:00:36.76,0:00:36.88,Cap,,0,0,0,,{\c&H00FFFFFF&}ALSO {\c&H003430D4&}WENN {\c&H00FFFFFF&}DIE
+Dialogue: 0,0:00:36.88,0:00:36.93,Cap,,0,0,0,,{\c&H00FFFFFF&}ALSO {\c&H00FFFFFF&}WENN {\c&H003430D4&}DIE
+Dialogue: 0,0:00:36.95,0:00:37.26,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}NÄCHSTE {\c&H00FFFFFF&}IMPFUNG
+Dialogue: 0,0:00:37.26,0:00:37.53,Cap,,0,0,0,,{\c&H00FFFFFF&}NÄCHSTE {\c&H003430D4&}IMPFUNG
+Dialogue: 0,0:00:37.55,0:00:38.14,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}ANSTEHT {\c&H00FFFFFF&}ODER
+Dialogue: 0,0:00:38.14,0:00:38.59,Cap,,0,0,0,,{\c&H00FFFFFF&}ANSTEHT {\c&H003430D4&}ODER
+Dialogue: 0,0:00:39.01,0:00:39.17,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}JA
+Dialogue: 0,0:00:39.19,0:00:39.38,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}WENN {\c&H00FFFFFF&}ICH
+Dialogue: 0,0:00:39.38,0:00:39.65,Cap,,0,0,0,,{\c&H00FFFFFF&}WENN {\c&H003430D4&}ICH
+Dialogue: 0,0:00:39.77,0:00:39.98,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}IRGENDWIE {\c&H00FFFFFF&}EINEN
+Dialogue: 0,0:00:40.01,0:00:40.36,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}TERMIN {\c&H00FFFFFF&}BRAUCHE
+Dialogue: 0,0:00:40.36,0:00:41.05,Cap,,0,0,0,,{\c&H00FFFFFF&}TERMIN {\c&H003430D4&}BRAUCHE
+Dialogue: 0,0:00:41.07,0:00:41.74,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}DANN {\c&H00FFFFFF&}WÜRDE {\c&H00FFFFFF&}ICH
+Dialogue: 0,0:00:41.74,0:00:41.86,Cap,,0,0,0,,{\c&H00FFFFFF&}DANN {\c&H003430D4&}WÜRDE {\c&H00FFFFFF&}ICH
+Dialogue: 0,0:00:41.86,0:00:41.89,Cap,,0,0,0,,{\c&H00FFFFFF&}DANN {\c&H00FFFFFF&}WÜRDE {\c&H003430D4&}ICH
+Dialogue: 0,0:00:41.91,0:00:42.06,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}DA {\c&H00FFFFFF&}EVENTUELL
+Dialogue: 0,0:00:42.06,0:00:42.33,Cap,,0,0,0,,{\c&H00FFFFFF&}DA {\c&H003430D4&}EVENTUELL
+Dialogue: 0,0:00:42.35,0:00:42.59,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}DRAUF
+Dialogue: 0,0:00:42.61,0:00:43.43,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}ZURÜCKKOMMEN
+Dialogue: 0,0:00:45.53,0:00:46.16,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}WENN'S {\c&H00FFFFFF&}IN {\c&H00FFFFFF&}'NER
+Dialogue: 0,0:00:46.16,0:00:46.32,Cap,,0,0,0,,{\c&H00FFFFFF&}WENN'S {\c&H003430D4&}IN {\c&H00FFFFFF&}'NER
+Dialogue: 0,0:00:46.32,0:00:46.55,Cap,,0,0,0,,{\c&H00FFFFFF&}WENN'S {\c&H00FFFFFF&}IN {\c&H003430D4&}'NER
+Dialogue: 0,0:00:46.57,0:00:47.30,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}APOTHEKE {\c&H00FFFFFF&}MACHBAR
+Dialogue: 0,0:00:47.30,0:00:47.53,Cap,,0,0,0,,{\c&H00FFFFFF&}APOTHEKE {\c&H003430D4&}MACHBAR
+Dialogue: 0,0:00:47.55,0:00:47.63,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}IST
+Dialogue: 0,0:00:47.65,0:00:47.78,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}DIE {\c&H00FFFFFF&}IN {\c&H00FFFFFF&}MEINER
+Dialogue: 0,0:00:47.78,0:00:47.86,Cap,,0,0,0,,{\c&H00FFFFFF&}DIE {\c&H003430D4&}IN {\c&H00FFFFFF&}MEINER
+Dialogue: 0,0:00:47.86,0:00:48.03,Cap,,0,0,0,,{\c&H00FFFFFF&}DIE {\c&H00FFFFFF&}IN {\c&H003430D4&}MEINER
+Dialogue: 0,0:00:48.05,0:00:48.26,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}NÄHE {\c&H00FFFFFF&}IST
+Dialogue: 0,0:00:48.26,0:00:48.51,Cap,,0,0,0,,{\c&H00FFFFFF&}NÄHE {\c&H003430D4&}IST
+Dialogue: 0,0:00:48.95,0:00:49.16,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}WÜRDE {\c&H00FFFFFF&}ICH
+Dialogue: 0,0:00:49.19,0:00:49.57,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}WAHRSCHEINLICH
+Dialogue: 0,0:00:49.59,0:00:49.70,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}IN {\c&H00FFFFFF&}DIE {\c&H00FFFFFF&}APOTHEKE
+Dialogue: 0,0:00:49.70,0:00:49.78,Cap,,0,0,0,,{\c&H00FFFFFF&}IN {\c&H003430D4&}DIE {\c&H00FFFFFF&}APOTHEKE
+Dialogue: 0,0:00:49.78,0:00:50.47,Cap,,0,0,0,,{\c&H00FFFFFF&}IN {\c&H00FFFFFF&}DIE {\c&H003430D4&}APOTHEKE
+Dialogue: 0,0:00:50.49,0:00:50.88,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}GEHEN {\c&H00FFFFFF&}ALS {\c&H00FFFFFF&}JETZT
+Dialogue: 0,0:00:50.88,0:00:51.14,Cap,,0,0,0,,{\c&H00FFFFFF&}GEHEN {\c&H003430D4&}ALS {\c&H00FFFFFF&}JETZT
+Dialogue: 0,0:00:51.14,0:00:51.45,Cap,,0,0,0,,{\c&H00FFFFFF&}GEHEN {\c&H00FFFFFF&}ALS {\c&H003430D4&}JETZT
+Dialogue: 0,0:00:51.47,0:00:51.72,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}ZUM {\c&H00FFFFFF&}ARZT {\c&H00FFFFFF&}ZU
+Dialogue: 0,0:00:51.72,0:00:52.18,Cap,,0,0,0,,{\c&H00FFFFFF&}ZUM {\c&H003430D4&}ARZT {\c&H00FFFFFF&}ZU
+Dialogue: 0,0:00:52.18,0:00:52.23,Cap,,0,0,0,,{\c&H00FFFFFF&}ZUM {\c&H00FFFFFF&}ARZT {\c&H003430D4&}ZU
+Dialogue: 0,0:00:52.25,0:00:52.77,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}GEHEN
+Dialogue: 0,0:00:52.79,0:00:52.87,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}JA
+Dialogue: 0,0:00:52.89,0:00:52.95,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}JA
+Dialogue: 0,0:00:52.97,0:00:53.20,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}ALSO {\c&H00FFFFFF&}WENN {\c&H00FFFFFF&}ICH
+Dialogue: 0,0:00:53.20,0:00:53.34,Cap,,0,0,0,,{\c&H00FFFFFF&}ALSO {\c&H003430D4&}WENN {\c&H00FFFFFF&}ICH
+Dialogue: 0,0:00:53.35,0:00:53.52,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}JETZT {\c&H00FFFFFF&}ZUM
+Dialogue: 0,0:00:53.53,0:00:53.78,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}BEISPIEL {\c&H00FFFFFF&}NICHT
+Dialogue: 0,0:00:53.78,0:00:53.83,Cap,,0,0,0,,{\c&H00FFFFFF&}BEISPIEL {\c&H003430D4&}NICHT
+Dialogue: 0,0:00:53.85,0:00:54.00,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}SO {\c&H00FFFFFF&}VIEL {\c&H00FFFFFF&}ZEIT
+Dialogue: 0,0:00:54.00,0:00:54.20,Cap,,0,0,0,,{\c&H00FFFFFF&}SO {\c&H003430D4&}VIEL {\c&H00FFFFFF&}ZEIT
+Dialogue: 0,0:00:54.20,0:00:54.41,Cap,,0,0,0,,{\c&H00FFFFFF&}SO {\c&H00FFFFFF&}VIEL {\c&H003430D4&}ZEIT
+Dialogue: 0,0:00:54.43,0:00:54.75,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}HABE
+Dialogue: 0,0:00:54.77,0:00:55.06,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}BEIM {\c&H00FFFFFF&}ARZT {\c&H00FFFFFF&}DAUERT
+Dialogue: 0,0:00:55.06,0:00:55.28,Cap,,0,0,0,,{\c&H00FFFFFF&}BEIM {\c&H003430D4&}ARZT {\c&H00FFFFFF&}DAUERT
+Dialogue: 0,0:00:55.28,0:00:55.37,Cap,,0,0,0,,{\c&H00FFFFFF&}BEIM {\c&H00FFFFFF&}ARZT {\c&H003430D4&}DAUERT
+Dialogue: 0,0:00:55.39,0:00:55.62,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}DAS {\c&H00FFFFFF&}ALLES {\c&H00FFFFFF&}IMMER
+Dialogue: 0,0:00:55.62,0:00:55.84,Cap,,0,0,0,,{\c&H00FFFFFF&}DAS {\c&H003430D4&}ALLES {\c&H00FFFFFF&}IMMER
+Dialogue: 0,0:00:55.84,0:00:55.95,Cap,,0,0,0,,{\c&H00FFFFFF&}DAS {\c&H00FFFFFF&}ALLES {\c&H003430D4&}IMMER
+Dialogue: 0,0:00:55.97,0:00:56.50,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}RELATIV {\c&H00FFFFFF&}LANG
+Dialogue: 0,0:00:56.50,0:00:56.97,Cap,,0,0,0,,{\c&H00FFFFFF&}RELATIV {\c&H003430D4&}LANG
+Dialogue: 0,0:00:57.25,0:00:57.52,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}ICH {\c&H00FFFFFF&}BIN {\c&H00FFFFFF&}ALS
+Dialogue: 0,0:00:57.52,0:00:57.84,Cap,,0,0,0,,{\c&H00FFFFFF&}ICH {\c&H003430D4&}BIN {\c&H00FFFFFF&}ALS
+Dialogue: 0,0:00:57.84,0:00:58.03,Cap,,0,0,0,,{\c&H00FFFFFF&}ICH {\c&H00FFFFFF&}BIN {\c&H003430D4&}ALS
+Dialogue: 0,0:00:58.05,0:00:58.42,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}MENSCH {\c&H00FFFFFF&}IMMER {\c&H00FFFFFF&}EIN
+Dialogue: 0,0:00:58.42,0:00:58.56,Cap,,0,0,0,,{\c&H00FFFFFF&}MENSCH {\c&H003430D4&}IMMER {\c&H00FFFFFF&}EIN
+Dialogue: 0,0:00:58.59,0:00:59.05,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}BISSCHEN
+Dialogue: 0,0:00:59.07,0:00:59.81,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}SKEPTISCH
+Dialogue: 0,0:01:00.15,0:01:00.54,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}ABER {\c&H00FFFFFF&}FÜR {\c&H00FFFFFF&}DIE
+Dialogue: 0,0:01:00.54,0:01:00.66,Cap,,0,0,0,,{\c&H00FFFFFF&}ABER {\c&H003430D4&}FÜR {\c&H00FFFFFF&}DIE
+Dialogue: 0,0:01:00.66,0:01:00.73,Cap,,0,0,0,,{\c&H00FFFFFF&}ABER {\c&H00FFFFFF&}FÜR {\c&H003430D4&}DIE
+Dialogue: 0,0:01:00.75,0:01:01.27,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}MENSCHEN
+Dialogue: 0,0:01:01.29,0:01:01.50,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}WO {\c&H00FFFFFF&}JA {\c&H00FFFFFF&}DANN
+Dialogue: 0,0:01:01.50,0:01:01.70,Cap,,0,0,0,,{\c&H00FFFFFF&}WO {\c&H003430D4&}JA {\c&H00FFFFFF&}DANN
+Dialogue: 0,0:01:01.70,0:01:01.95,Cap,,0,0,0,,{\c&H00FFFFFF&}WO {\c&H00FFFFFF&}JA {\c&H003430D4&}DANN
+Dialogue: 0,0:01:01.97,0:01:02.20,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}DIE {\c&H00FFFFFF&}LEUTE
+Dialogue: 0,0:01:02.20,0:01:02.41,Cap,,0,0,0,,{\c&H00FFFFFF&}DIE {\c&H003430D4&}LEUTE
+Dialogue: 0,0:01:02.43,0:01:02.58,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}WO {\c&H00FFFFFF&}DIE {\c&H00FFFFFF&}ZEIT
+Dialogue: 0,0:01:02.58,0:01:02.76,Cap,,0,0,0,,{\c&H00FFFFFF&}WO {\c&H003430D4&}DIE {\c&H00FFFFFF&}ZEIT
+Dialogue: 0,0:01:02.76,0:01:02.95,Cap,,0,0,0,,{\c&H00FFFFFF&}WO {\c&H00FFFFFF&}DIE {\c&H003430D4&}ZEIT
+Dialogue: 0,0:01:02.97,0:01:03.20,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}NICHT {\c&H00FFFFFF&}DAFÜR
+Dialogue: 0,0:01:03.20,0:01:03.47,Cap,,0,0,0,,{\c&H00FFFFFF&}NICHT {\c&H003430D4&}DAFÜR
+Dialogue: 0,0:01:03.49,0:01:04.14,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}HABEN {\c&H00FFFFFF&}UND
+Dialogue: 0,0:01:04.14,0:01:04.67,Cap,,0,0,0,,{\c&H00FFFFFF&}HABEN {\c&H003430D4&}UND
+Dialogue: 0,0:01:04.93,0:01:05.20,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}VIEL {\c&H00FFFFFF&}UNTERWEGS
+Dialogue: 0,0:01:05.20,0:01:05.77,Cap,,0,0,0,,{\c&H00FFFFFF&}VIEL {\c&H003430D4&}UNTERWEGS
+Dialogue: 0,0:01:05.79,0:01:06.20,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}SIND {\c&H00FFFFFF&}UND
+Dialogue: 0,0:01:06.20,0:01:06.29,Cap,,0,0,0,,{\c&H00FFFFFF&}SIND {\c&H003430D4&}UND
+Dialogue: 0,0:01:06.31,0:01:06.64,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}BRAUCHEN {\c&H00FFFFFF&}EINEN
+Dialogue: 0,0:01:06.64,0:01:06.71,Cap,,0,0,0,,{\c&H00FFFFFF&}BRAUCHEN {\c&H003430D4&}EINEN
+Dialogue: 0,0:01:06.73,0:01:07.09,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}SCHNELLER
+Dialogue: 0,0:01:07.11,0:01:07.63,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}TERMIN
+Dialogue: 0,0:01:07.93,0:01:08.30,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}WÄRE {\c&H00FFFFFF&}DAS {\c&H00FFFFFF&}'NE
+Dialogue: 0,0:01:08.30,0:01:08.56,Cap,,0,0,0,,{\c&H00FFFFFF&}WÄRE {\c&H003430D4&}DAS {\c&H00FFFFFF&}'NE
+Dialogue: 0,0:01:08.56,0:01:08.95,Cap,,0,0,0,,{\c&H00FFFFFF&}WÄRE {\c&H00FFFFFF&}DAS {\c&H003430D4&}'NE
+Dialogue: 0,0:01:09.13,0:01:09.60,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}SUPER {\c&H00FFFFFF&}GUTE
+Dialogue: 0,0:01:09.60,0:01:09.81,Cap,,0,0,0,,{\c&H00FFFFFF&}SUPER {\c&H003430D4&}GUTE
+Dialogue: 0,0:01:09.83,0:01:10.11,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}LÖSUNG
+Dialogue: 0,0:01:10.13,0:01:10.75,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}ALTERNATIVEN
+Dialogue: 0,0:01:10.77,0:01:11.38,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}ALSO {\c&H00FFFFFF&}FINDE {\c&H00FFFFFF&}ICH
+Dialogue: 0,0:01:11.38,0:01:11.56,Cap,,0,0,0,,{\c&H00FFFFFF&}ALSO {\c&H003430D4&}FINDE {\c&H00FFFFFF&}ICH
+Dialogue: 0,0:01:11.56,0:01:11.59,Cap,,0,0,0,,{\c&H00FFFFFF&}ALSO {\c&H00FFFFFF&}FINDE {\c&H003430D4&}ICH
+Dialogue: 0,0:01:11.61,0:01:12.15,Cap,,0,0,0,,{\fscx70\fscy70\t(0,110,\fscx108\fscy108)\t(110,190,\fscx100\fscy100)}{\c&H003430D4&}SUPER
+Dialogue: 1,0:00:00.05,0:00:11.20,Q,,0,0,0,,{\fad(250,200)}Wann warst du zuletzt\Nin einer Apotheke?
+Dialogue: 1,0:00:11.25,0:00:25.45,Q,,0,0,0,,{\fad(250,200)}Was glaubst du, welche Leistungen\NApotheken heute anbieten?
+Dialogue: 1,0:00:25.50,0:00:43.65,Q,,0,0,0,,{\fad(250,200)}Wusstest du, dass einige\NApotheken auch impfen?
+Dialogue: 1,0:00:43.70,0:01:12.87,Q,,0,0,0,,{\fad(250,200)}Würdest du dieses Angebot nutzen?
