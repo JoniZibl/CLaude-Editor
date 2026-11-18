@@ -9,6 +9,7 @@ from pathlib import Path
 SRC = Path(__file__).parent / "transcripts" / "video2.json"
 OUT = Path(__file__).parent / "captions.ass"
 SKIP_SPEAKERS = {"speaker_0"}
+HIDE_WORDS = {"alternativen"}
 FILLERS = {"ähm", "äh", "öhm", "hm", "ähm,", "äh,"}
 MAX_WORDS, MAX_CHARS = 3, 16
 
@@ -25,7 +26,7 @@ for i, w in enumerate(words):
     if w.get("speaker_id") in SKIP_SPEAKERS:
         if cur: groups.append(cur); cur = []
         continue
-    if re.sub(r"[^\wäöüß]", "", txt.lower()) in {f.strip(",") for f in FILLERS}:
+    if re.sub(r"[^\wäöüß]", "", txt.lower()) in {f.strip(",") for f in FILLERS} | HIDE_WORDS:
         continue
     gap = cur and w["start"] - cur[-1]["end"] > 0.6
     chars = sum(len(x["text"]) + 1 for x in cur) + len(txt)
